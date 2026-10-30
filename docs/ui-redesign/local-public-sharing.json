@@ -1,0 +1,10 @@
+{
+  "checkedAt": "2026-10-30T16:44:33.501Z",
+  "liveGemini": false,
+  "checks": [
+    "Explicit publication consent; approved snapshot opens without creator cookie; owner information withheld",
+    "Private edits do not silently alter published snapshot",
+    "Guest interview uses published snapshot; creator cannot read guest session",
+    "Another browser cannot unpublish creator profile; owner unpublish revokes page and API"
+  ]
+}

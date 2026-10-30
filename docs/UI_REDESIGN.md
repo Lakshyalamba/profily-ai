@@ -14,7 +14,7 @@ The redesign changes presentation across the existing application. APIs, Gemini 
 - `/interview`: consented session entry. Completed sessions: actual-data brief overview, transcript, sources and original PDF export.
 - `/match`: real requirement-count breakdown and source-linked supported/partial/not-established cards. No compatibility score or ranking.
 - `/analytics`: actual recorded metrics, activity chart, skills, interview and saved-comparison history. No demo activity is injected.
-- Consistent errors, empty states, route loading skeletons and native confirmation dialogs for destructive controls. Confirmations initially focus the safe action; Escape closes them.
+- Consistent errors, empty states, workspace route loading skeletons and native confirmation dialogs for destructive controls. Confirmations initially focus the safe action; Escape closes them.
 
 ## Shared components
 
@@ -33,6 +33,8 @@ The redesign changes presentation across the existing application. APIs, Gemini 
 - Chrome layout checks: desktop 1512, phone 390 and 360, tablet 820 pixels across the main route families; no horizontal overflow. Menus, Escape, focus, composer, evidence links, report and missing-page presentation were inspected. `ui-redesign/responsive-checks.json` records geometry observations.
 - Fresh synthetic PDF extraction and Gemini structuring passed. The subsequent fresh Express import encountered **GitHub's anonymous public API rate limit (HTTP 429)** in the local environment; this is recorded in `ui-redesign/local-ingestion-check.txt`. No scripted success replaced it. The judge demo retains its real, pinned, bundled repository observations.
 - Configured credential values scanned against public source/artifacts: no matches. Backend, AI services, hooks and voice-controller source have no redesign diff.
+
+A live sharing regression test caught an initial global loading boundary returning a streamed HTTP 200 for a revoked page. Loading boundaries are now scoped to workspace routes; the revoked page and unknown route return HTTP 404 again. The complete local six-check sharing suite passes after this correction, including guest isolation and revocation. This changed no publication service code.
 
 ## Deployment verification
 

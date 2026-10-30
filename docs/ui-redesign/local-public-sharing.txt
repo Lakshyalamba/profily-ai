@@ -1,0 +1,24 @@
+/api/profile 200 received
+/api/profile 200 received
+/api/publish 400 received
+/api/publish 200 received
+/api/public/760632a59c4911fd36b36329d2eb6e72 200 received
+/api/publish 200 received
+/api/profile 200 received
+/api/public/760632a59c4911fd36b36329d2eb6e72 200 received
+/api/interviews 201 received
+/api/interviews/5fd39540-18f0-42d5-86b6-4c736cf10911 404 received
+/api/interviews/5fd39540-18f0-42d5-86b6-4c736cf10911 200 received
+/api/publish 200 received
+/api/publish 200 received
+/api/public/760632a59c4911fd36b36329d2eb6e72 404 received
+{
+  "passed": 4,
+  "checks": [
+    "Explicit publication consent; approved snapshot opens without creator cookie; owner information withheld",
+    "Private edits do not silently alter published snapshot",
+    "Guest interview uses published snapshot; creator cannot read guest session",
+    "Another browser cannot unpublish creator profile; owner unpublish revokes page and API"
+  ]
+}
+/api/profile 200 received
