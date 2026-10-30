@@ -1,0 +1,15 @@
+services:
+  profily:
+    build: .
+    init: true
+    ports:
+      - "127.0.0.1:3000:3000"
+    env_file:
+      - .env.local
+    environment:
+      PROFILY_DATA_DIR: /app/.data/profiles
+    volumes:
+      - profily-data:/app/.data
+    restart: unless-stopped
+volumes:
+  profily-data:

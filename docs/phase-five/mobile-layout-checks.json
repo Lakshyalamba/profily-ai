@@ -1,0 +1,44 @@
+[
+  {
+    "route": "/",
+    "heading": "Your experience.A conversation.More possibilities.",
+    "scroll": 345,
+    "width": 345
+  },
+  {
+    "route": "/analytics",
+    "heading": "Better context.A clearer next conversation.",
+    "scroll": 345,
+    "width": 345
+  },
+  {
+    "route": "/p/9042e300de43ef80477650fbadd88d78",
+    "heading": "Jordan Ellis · Synthetic QA",
+    "scroll": 345,
+    "width": 345
+  },
+  {
+    "route": "/publish",
+    "heading": "Your profile. Your public link.",
+    "scroll": 345,
+    "width": 345
+  },
+  {
+    "route": "/interview/3c0068e9-388d-4085-99c5-47b175e8b70c",
+    "heading": "Jordan Ellis · Synthetic QA",
+    "scroll": 345,
+    "width": 345
+  },
+  {
+    "route": "/match?profile=public-9042e300de43ef80477650fbadd88d78",
+    "heading": "A role. A profile. The evidence.",
+    "scroll": 345,
+    "width": 345
+  },
+  {
+    "route": "/create",
+    "heading": "Start with your story.",
+    "scroll": 345,
+    "width": 345
+  }
+]

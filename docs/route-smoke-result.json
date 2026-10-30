@@ -1,0 +1,42 @@
+{
+  "checkedAt": "2026-10-30T06:50:30.991Z",
+  "routes": [
+    {
+      "route": "/",
+      "status": 200
+    },
+    {
+      "route": "/create",
+      "status": 200
+    },
+    {
+      "route": "/profile/demo",
+      "status": 200
+    },
+    {
+      "route": "/profile/private",
+      "status": 200
+    },
+    {
+      "route": "/publish",
+      "status": 200
+    },
+    {
+      "route": "/match",
+      "status": 200
+    },
+    {
+      "route": "/interview?profile=demo",
+      "status": 200
+    },
+    {
+      "route": "/analytics",
+      "status": 200
+    },
+    {
+      "route": "/p/b90c7e83942bf0ba1ecde9078b9b52f8",
+      "status": 200
+    }
+  ],
+  "internalLinksAndAssets": 13
+}
