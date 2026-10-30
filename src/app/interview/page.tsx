@@ -15,6 +15,7 @@ export default async function Page({
       : "demo";
   return (
     <InterviewStart
+      key={mode}
       demo={mode === "judge" ? judgeSnapshot() : demoSnapshot()}
       mode={mode}
     />

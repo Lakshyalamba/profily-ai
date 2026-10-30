@@ -9,6 +9,7 @@ import {
   Loader2,
   FileUp,
   GitBranch,
+  ShieldCheck,
 } from "lucide-react";
 import {
   candidateSchema,
@@ -22,6 +23,7 @@ import {
 } from "@/lib/evidence-selection";
 import { draftSchema } from "@/types/profile";
 import { api, errorMessage } from "@/lib/client-api";
+import { ConfirmAction } from "./confirm-action";
 import { Button } from "./ui/button";
 import { SourceList, CitationLinks } from "./source-list";
 const empty: Candidate = {
@@ -219,6 +221,40 @@ export function DraftForm() {
             Load saved profile
           </Button>
         </div>
+        <ol
+          className="creation-progress"
+          aria-label="Profile creation progress"
+        >
+          <li
+            aria-current={!review ? "step" : undefined}
+            className={!review ? "current" : "complete"}
+          >
+            <span>{review ? <Check size={13} /> : "01"}</span>
+            <div>
+              Bring your evidence<small>Import & edit</small>
+            </div>
+          </li>
+          <li
+            aria-current={review ? "step" : undefined}
+            className={review ? "current" : ""}
+          >
+            <span>02</span>
+            <div>
+              Review your story<small>Check the sources</small>
+            </div>
+          </li>
+          <li className={workspace?.saved ? "complete" : ""}>
+            <span>{workspace?.saved ? <Check size={13} /> : "03"}</span>
+            <div>
+              Private profile
+              <small>
+                {workspace?.saved
+                  ? "Saved version available"
+                  : "Save when ready"}
+              </small>
+            </div>
+          </li>
+        </ol>
         {!review ? (
           <>
             <div className="ingestion-panel">
@@ -238,7 +274,15 @@ export function DraftForm() {
                 repository files to Gemini for processing. Pending extracts are
                 stored privately on this server.
               </label>
-              <div className="field">
+              <div className="field upload-well">
+                <span className="upload-symbol">
+                  <FileUp size={25} />
+                </span>
+                <strong>A little context goes a long way.</strong>
+                <p>
+                  Choose your text-based résumé. Review everything before it
+                  becomes your profile.
+                </p>
                 <label htmlFor="resume">Resume PDF</label>
                 <input
                   id="resume"
@@ -447,6 +491,16 @@ export function DraftForm() {
           </>
         ) : (
           <div className="draft-review">
+            <div className="review-banner">
+              <ShieldCheck size={24} />
+              <div>
+                <h2>One last look. Entirely your story.</h2>
+                <p>
+                  Check the details and sources below. Saving keeps this profile
+                  private.
+                </p>
+              </div>
+            </div>
             <h2>{draft.name}</h2>
             <p>{draft.headline || "No headline added"}</p>
             {["skills", "education", "experience"].map((key) => (
@@ -629,10 +683,13 @@ export function DraftForm() {
             </div>
           </details>
         )}
-        <button
+        <ConfirmAction
+          title="Delete your workspace?"
+          description="Your private profile, recorded activity, public link and local draft will be removed. This cannot be undone. Download any reports you want to keep first."
+          variant="ghost"
           disabled={!!busy || !ready}
           className="delete-draft"
-          onClick={() =>
+          onConfirm={() =>
             run("Deleting workspace", async () => {
               await api("/api/profile", { method: "DELETE" });
               localStorage.removeItem("profily-draft-v1");
@@ -647,7 +704,7 @@ export function DraftForm() {
           }
         >
           <Trash2 size={13} /> Delete workspace, activity & public link
-        </button>
+        </ConfirmAction>
       </section>
       <aside className="draft-sidebar">
         <LockKeyhole size={26} />

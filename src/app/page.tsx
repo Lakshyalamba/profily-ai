@@ -1,220 +1,369 @@
 import Link from "next/link";
 import {
-  ArrowRight,
   ArrowUpRight,
+  ArrowRight,
   AudioLines,
-  Check,
-  Code2,
   FileText,
   GitBranch,
-  Layers3,
-  MessageSquare,
   ShieldCheck,
   Sparkles,
+  Layers3,
+  Mic,
+  Code2,
+  Braces,
+  ScanLine,
+  Check,
+  CircleHelp,
+  Quote,
+  FileCheck2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ProductPreview } from "@/components/product-preview";
+import { Reveal } from "@/components/design-motion";
 export default function Home() {
   return (
     <>
-      <section className="container hero">
-        <div className="hero-copy">
-          <div className="eyebrow">
-            <span className="status-dot" /> A NEW WAY TO GET TO KNOW A DEVELOPER
+      <section className="landing-hero">
+        <div className="hero-grid" aria-hidden="true" />
+        <div className="container hero">
+          <div className="hero-copy">
+            <div className="hero-kicker">
+              <span />
+              YOUR NEXT INTRODUCTION, REIMAGINED <ArrowUpRight size={12} />
+            </div>
+            <h1>
+              Your work.
+              <br />A voice of
+              <br />
+              <span>its own.</span>
+            </h1>
+            <p className="hero-description">
+              You’re more than a list of skills. Turn your résumé and projects
+              into a career twin that answers questions—and brings the evidence.
+            </p>
+            <div className="hero-actions">
+              <Button asChild>
+                <Link href="/profile/judge">
+                  Meet a career twin <ArrowUpRight size={17} />
+                </Link>
+              </Button>
+              <Button asChild variant="outline">
+                <Link href="/create">
+                  Build your profile <ArrowRight size={16} />
+                </Link>
+              </Button>
+            </div>
+            <div className="hero-assurances">
+              <span>
+                <ShieldCheck size={15} />
+                Evidence-first answers
+              </span>
+              <span>
+                <Mic size={15} />
+                Voice or text
+              </span>
+            </div>
           </div>
-          <h1>
-            Your experience.
-            <br />A conversation.
-            <br />
-            <span>More possibilities.</span>
-          </h1>
-          <p className="hero-description">
-            Go beyond the résumé. Give your work a voice with an interactive
-            career twin that answers questions—and shows the evidence.
-          </p>
-          <div className="actions">
-            <Button asChild>
-              <Link href="/profile/judge">
-                Try the judge demo <ArrowUpRight size={18} />
-              </Link>
-            </Button>
-            <Button asChild variant="outline">
-              <Link href="/create">
-                Build yours <ArrowRight size={16} />
-              </Link>
-            </Button>
-          </div>
-          <div className="hero-note">
-            <ShieldCheck size={15} /> Built around evidence. Designed for trust.
+          <div className="hero-visual">
+            <div className="preview-orbit" aria-hidden="true" />
+            <ProductPreview />
+            <div className="hero-floating-note">
+              <span className="note-icon">
+                <ScanLine size={18} />
+              </span>
+              <div>
+                <strong>Every claim has context.</strong>
+                <small>Resume claims ≠ repository observations</small>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="hero-visual">
-          <div className="preview-top">
-            <span>
-              <span className="status-dot" /> CAREER TWIN PREVIEW
-            </span>
-            <span className="tiny-label">FICTIONAL DEMO</span>
+        <div className="container connected-strip">
+          <span>
+            YOUR EVIDENCE.
+            <br />
+            <strong>ONE CONNECTED STORY.</strong>
+          </span>
+          <div>
+            <FileText size={20} />
+            Résumé
           </div>
-          <div className="preview-person">
-            <div className="avatar">
-              AM
+          <i />
+          <div>
+            <GitBranch size={21} />
+            GitHub
+          </div>
+          <i />
+          <div>
+            <Sparkles size={20} />
+            Gemini
+          </div>
+          <i />
+          <div>
+            <AudioLines size={22} />
+            Your voice
+          </div>
+        </div>
+      </section>
+      <section className="container story-section" id="why-profily">
+        <Reveal>
+          <div className="section-heading">
+            <div>
+              <div className="eyebrow">BEYOND THE BULLET POINTS</div>
+              <h2>
+                A résumé opens the door.
+                <br />
+                <span>Context starts the conversation.</span>
+              </h2>
+            </div>
+            <p>
+              A technology name tells you very little. Understand what was
+              built, how it works, and what the available evidence actually
+              supports.
+            </p>
+          </div>
+        </Reveal>
+        <div className="story-comparison">
+          <Reveal className="static-resume">
+            <span className="tiny-label">
+              <FileText size={14} />
+              THE TRADITIONAL RÉSUMÉ
+            </span>
+            <h3>
+              Skills. Projects.
+              <br />
+              Still, so many questions.
+            </h3>
+            <div className="resume-lines" aria-hidden="true">
+              <span />
+              <span />
+              <span />
+            </div>
+            <div className="flat-skills">
+              <span>React</span>
+              <span>Node.js</span>
+              <span>PostgreSQL</span>
+            </div>
+            <p>
+              What did they personally build?
+              <br />
+              Where is the supporting context?
+            </p>
+          </Reveal>
+          <Reveal className="context-story" delay={0.08}>
+            <span className="tiny-label">
+              <AudioLines size={16} />
+              THE PROFILY CONVERSATION
+            </span>
+            <Quote size={30} className="story-quote" />
+            <h3>
+              “How was the database
+              <br />
+              used in this project?”
+            </h3>
+            <p>
+              Ask a specific question. Inspect a source-linked answer. Follow up
+              on what matters. If the evidence is missing, that stays visible.
+            </p>
+            <Link href="/profile/judge">
+              Explore the conversation <ArrowUpRight size={16} />
+            </Link>
+            <div className="context-source">
+              <FileCheck2 size={18} />
+              <span>Resume claims + repository excerpts</span>
+              <ShieldCheck size={16} />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+      <section className="workflow-section" id="how-it-works">
+        <div className="container">
+          <Reveal>
+            <div className="section-heading">
+              <div>
+                <div className="eyebrow">
+                  FROM YOUR WORK TO YOUR NEXT OPPORTUNITY
+                </div>
+                <h2>
+                  A thoughtful introduction.
+                  <br />
+                  <span>In three simple steps.</span>
+                </h2>
+              </div>
+              <Link className="text-link" href="/create">
+                Start building <ArrowUpRight size={16} />
+              </Link>
+            </div>
+          </Reveal>
+          <div className="workflow-grid">
+            {[
+              {
+                number: "01",
+                icon: FileText,
+                title: "Bring the substance.",
+                body: "Upload a text-based PDF and connect selected public repositories. Keep your work together, with its original context.",
+                label: "RÉSUMÉ + PUBLIC REPOSITORIES",
+              },
+              {
+                number: "02",
+                icon: ScanLine,
+                title: "Make it yours.",
+                body: "Review extracted details, edit your story, and choose the evidence to include. Nothing is silently published.",
+                label: "REVIEWED BY YOU",
+              },
+              {
+                number: "03",
+                icon: AudioLines,
+                title: "Let the conversation begin.",
+                body: "Share an approved profile. Recruiters can ask, listen, inspect sources, and leave with an evidence-backed interview brief.",
+                label: "SHARE WITH INTENTION",
+              },
+            ].map(({ number, icon: Icon, title, body, label }, i) => (
+              <Reveal className="workflow-step" key={number} delay={i * 0.06}>
+                <div className="workflow-number">
+                  {number}
+                  <Icon size={23} />
+                </div>
+                <h3>{title}</h3>
+                <p>{body}</p>
+                <span className="tiny-label">{label}</span>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="container capabilities-section">
+        <Reveal>
+          <div className="section-heading">
+            <div>
+              <div className="eyebrow">AN INTRODUCTION THAT GOES FURTHER</div>
+              <h2>
+                Built for better questions.
+                <br />
+                <span>Designed for honest answers.</span>
+              </h2>
+            </div>
+            <p>
+              One connected experience for your projects, conversations,
+              evidence and next steps.
+            </p>
+          </div>
+        </Reveal>
+        <div className="capability-grid">
+          <Reveal className="capability-voice">
+            <span className="tiny-label">
+              <Mic size={15} />A MORE NATURAL INTERVIEW
+            </span>
+            <div className="marketing-orb" aria-hidden="true">
+              <div>
+                <AudioLines size={44} />
+              </div>
+              <span />
               <span />
             </div>
             <div>
-              <h2>
-                Alex Morgan{" "}
-                <span className="mini-check">
-                  <Check size={11} />
-                </span>
-              </h2>
-              <p>Full-stack developer</p>
-              <span className="availability">Open to internships</span>
-            </div>
-            <Link
-              href="/profile/demo"
-              aria-label="Open Alex’s sample profile"
-              className="round-link"
-            >
-              <ArrowUpRight size={19} />
-            </Link>
-          </div>
-          <div className="preview-tags">
-            <span>TypeScript</span>
-            <span>React</span>
-            <span>PostgreSQL</span>
-            <span>+3</span>
-          </div>
-          <div className="preview-divider" />
-          <div className="preview-question">
-            What has Alex built with PostgreSQL?
-          </div>
-          <div className="preview-answer">
-            <span className="small-logo">
-              <AudioLines size={16} />
-            </span>
-            <div>
-              <span className="assistant-label">
-                ALEX’S CAREER TWIN <span>Demo</span>
-              </span>
+              <h3>
+                A voice behind
+                <br />
+                the work.
+              </h3>
               <p>
-                In Taskflow, Alex’s sample schema uses PostgreSQL to model
-                users, workspaces, and tasks, with transactions for task
-                creation.
+                Speak a question, hear the answer, or switch to text. Keep the
+                conversation moving with follow-ups, mute and playback controls.
               </p>
-              <Link
-                className="citation"
-                href="/profile/demo#evidence-taskflow-db"
-              >
-                <FileText size={12} /> Taskflow · sample schema{" "}
-                <ArrowUpRight size={12} />
+              <Link href="/interview?profile=judge">
+                Open an interview <ArrowUpRight size={16} />
               </Link>
+              <small>
+                Turn-based browser speech services. Availability varies by
+                browser.
+              </small>
             </div>
-          </div>
-          <Link className="preview-input" href="/profile/demo">
-            <span>Ask about Alex’s experience…</span>
-            <span className="input-send">
-              <ArrowUpRight size={17} />
+          </Reveal>
+          <Reveal className="capability-evidence" delay={0.05}>
+            <span className="feature-icon">
+              <Braces size={24} />
             </span>
-          </Link>
-          <div className="preview-foot">
-            <ShieldCheck size={12} /> Illustrative answer · backed by sample
-            evidence
-          </div>
-        </div>
-      </section>
-      <section className="container trust-strip">
-        <span>LESS GUESSWORK. MORE CONTEXT.</span>
-        <div>
-          <FileText size={18} /> Résumé claims
-        </div>
-        <span className="strip-plus">+</span>
-        <div>
-          <GitBranch size={18} /> Project evidence
-        </div>
-        <span className="strip-plus">=</span>
-        <div>
-          <MessageSquare size={18} /> A better conversation
-        </div>
-      </section>
-      <section className="container how-section" id="how-it-works">
-        <div className="section-heading">
-          <div>
-            <div className="eyebrow">THE WORK BEHIND THE WORDS</div>
-            <h2>
-              A résumé tells a story.
+            <h3>
+              Follow the source.
               <br />
-              <span>Let your work back it up.</span>
-            </h2>
-          </div>
-          <p>
-            A clearer picture of what you’ve built, how you think, and where you
-            can make an impact.
-          </p>
-        </div>
-        <div className="feature-grid">
-          <article className="feature">
-            <span className="feature-icon">
-              <Layers3 />
-            </span>
-            <span className="step">01 / BRING YOUR EXPERIENCE</span>
-            <h3>Your work, in one place.</h3>
+              Not an assumption.
+            </h3>
             <p>
-              The foundation for your résumé, projects, and professional story.
-              Review your information before sharing it.
+              Inspect original excerpts and pinned repository references. Code
+              in a repository establishes observations—not personal authorship.
             </p>
-            <span className="feature-caption">
-              Reviewed private drafts
-            </span>
-          </article>
-          <article className="feature">
-            <span className="feature-icon">
-              <AudioLines />
-            </span>
-            <span className="step">02 / START A CONVERSATION</span>
-            <h3>Go beyond the bullet points.</h3>
-            <p>
-              Explore technical decisions and relevant experience through
-              focused questions and evidence-linked answers.
-            </p>
-            <Link href="/profile/judge">
-              Try the demo <ArrowRight size={14} />
+            <div className="file-breadcrumb">
+              <GitBranch size={15} />
+              <span>Repository</span>
+              <ArrowRight size={12} />
+              <span>Source</span>
+              <ArrowRight size={12} />
+              <ShieldCheck size={15} />
+            </div>
+            <Link href="/profile/judge#evidence">
+              Inspect the evidence <ArrowUpRight size={15} />
             </Link>
-          </article>
-          <article className="feature">
+          </Reveal>
+          <Reveal className="capability-match" delay={0.1}>
             <span className="feature-icon">
-              <ShieldCheck />
+              <Layers3 size={24} />
             </span>
-            <span className="step">03 / FOLLOW THE EVIDENCE</span>
-            <h3>Context you can inspect.</h3>
+            <h3>
+              A role. A profile.
+              <br />A clearer picture.
+            </h3>
             <p>
-              See where an answer comes from. Missing evidence stays
-              visible—without inventing skills or experience.
+              Compare requirements with supplied evidence, with transparent
+              explanations and no invented compatibility score.
             </p>
-            <Link href="/match">
-              Explore job matching <ArrowRight size={14} />
+            <div className="status-example">
+              <span>
+                <Check size={13} />
+                Supported
+              </span>
+              <span>
+                <CircleHelp size={13} />
+                Not established
+              </span>
+            </div>
+            <Link href="/match?profile=judge">
+              Explore job matching <ArrowUpRight size={15} />
             </Link>
-          </article>
+          </Reveal>
         </div>
       </section>
-      <section className="container bottom-cta">
-        <div className="orb-icon">
-          <Code2 size={26} />
-        </div>
-        <div>
+      <section className="container closing-section">
+        <Reveal className="closing-panel">
+          <span className="closing-mark" aria-hidden="true">
+            <Code2 size={36} />
+          </span>
           <div className="eyebrow">LET YOUR WORK SPEAK</div>
-          <h2>There’s more to you than a PDF.</h2>
-          <p>See what an evidence-backed career conversation can feel like.</p>
-        </div>
-        <Button asChild>
-          <Link href="/profile/judge">
-            Explore the example <ArrowUpRight size={17} />
-          </Link>
-        </Button>
+          <h2>
+            Make your next introduction
+            <br />
+            <span>worth a conversation.</span>
+          </h2>
+          <p>
+            Start with a fictional career twin. See the real difference evidence
+            makes.
+          </p>
+          <div className="hero-actions">
+            <Button asChild>
+              <Link href="/profile/judge">
+                Explore the judge demo <ArrowUpRight size={17} />
+              </Link>
+            </Button>
+            <Link className="text-link" href="/create">
+              Create your own <ArrowRight size={16} />
+            </Link>
+          </div>
+          <div className="closing-disclosure">
+            <ShieldCheck size={14} />
+            Fictional candidate. Clearly labeled sources. No sign-in to explore.
+          </div>
+        </Reveal>
       </section>
-      <div className="container honesty">
-        <Sparkles size={14} /> Voice conversations, recorded
-        interviews, evidence-backed briefs, and PDF export. The example profile
-        remains fictional.
-      </div>
     </>
   );
 }

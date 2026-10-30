@@ -15,11 +15,13 @@ export function VoiceControls({
   controller,
   lastAnswer = "",
   disabled = false,
+  textInputId,
 }: {
   state: VoiceState;
   controller: VoiceController;
   lastAnswer?: string;
   disabled?: boolean;
+  textInputId?: string;
 }) {
   const labels = {
     idle: "Ready for a question",
@@ -114,15 +116,26 @@ export function VoiceControls({
             Read answer
           </Button>
         )}
-        {state.active && (
-          <Button
-            type="button"
-            size="sm"
-            variant="ghost"
+        {textInputId ? (
+          <a
+            className="voice-text-fallback"
+            href={`#${textInputId}`}
             onClick={controller.stop}
           >
-            <Keyboard size={14} /> Text mode
-          </Button>
+            <Keyboard size={14} />
+            Type instead
+          </a>
+        ) : (
+          state.active && (
+            <Button
+              type="button"
+              size="sm"
+              variant="ghost"
+              onClick={controller.stop}
+            >
+              <Keyboard size={14} /> Text mode
+            </Button>
+          )
         )}
       </div>
       {state.error && (

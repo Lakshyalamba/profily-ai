@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { workspaceSchema, type Snapshot } from "@/types/intelligence";
 import { api, errorMessage } from "@/lib/client-api";
+import { ConfirmAction } from "./confirm-action";
 import { Button } from "./ui/button";
 import { SourceList } from "./source-list";
 type Publication = {
@@ -211,13 +212,16 @@ export function PublishProfile() {
             >
               {copied ? "Link copied" : "Copy public link"}
             </Button>
-            <Button
+            <ConfirmAction
+              title="Unpublish this profile?"
+              description="The public link will stop working. Saved recruiter snapshots and downloaded reports will remain with their owners."
+              confirmLabel="Unpublish link"
               variant="outline"
               disabled={busy}
-              onClick={() => update(true)}
+              onConfirm={() => update(true)}
             >
               Unpublish link
-            </Button>
+            </ConfirmAction>
           </div>
           {copied && (
             <p role="status" className="muted small">

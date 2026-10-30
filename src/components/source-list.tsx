@@ -1,4 +1,4 @@
-import { FileText, ArrowUpRight } from "lucide-react";
+import { FileText, FileCode2, ArrowUpRight } from "lucide-react";
 import type { Source, Citation } from "@/types/intelligence";
 export function sourceLabel(source: Source) {
   return source.kind === "repository"
@@ -27,7 +27,12 @@ export function SourceList({
           className="evidence-detail"
         >
           <summary>
-            <FileText size={16} />
+            {source.kind === "repository" ||
+            source.kind === "sample-repository" ? (
+              <FileCode2 size={16} />
+            ) : (
+              <FileText size={16} />
+            )}
             <span>
               {source.title}
               <small>
@@ -36,7 +41,14 @@ export function SourceList({
               </small>
             </span>
           </summary>
-          <div className="source-content">
+          <div
+            className={
+              source.kind === "repository" ||
+              source.kind === "sample-repository"
+                ? "source-content source-repository"
+                : "source-content"
+            }
+          >
             <p>{source.excerpt}</p>
             {source.url && (
               <a
@@ -70,7 +82,9 @@ export function CitationLinks({
       {citations.map((c, i) => (
         <details className="quote-detail" key={c.sourceId + "-" + i}>
           <summary className="citation">
-            {sources.find((s) => s.id === c.sourceId)?.title ?? "Source"} ↗
+            <FileText size={12} />
+            {sources.find((s) => s.id === c.sourceId)?.title ?? "Source"}
+            <ArrowUpRight size={11} />
           </summary>
           <blockquote>{c.quote}</blockquote>
           <a

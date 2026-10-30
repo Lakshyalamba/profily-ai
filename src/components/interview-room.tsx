@@ -201,6 +201,7 @@ function InterviewRoom({ initial }: { initial: Interview }) {
             <VoiceControls
               state={voice.state}
               controller={voice.controller}
+              textInputId="interview-question"
               lastAnswer={last ? answerText(last) : ""}
               disabled={ending}
             />
@@ -210,16 +211,25 @@ function InterviewRoom({ initial }: { initial: Interview }) {
               loading={busy}
               welcome={
                 <div className="chat-welcome">
-                  <h3>Let’s get to know the work.</h3>
-                  <p>Start voice or ask a focused technical question below.</p>
+                  <h3 className="interview-suggestions-title">
+                    Suggested interview questions
+                  </h3>
                   <div className="suggestions">
                     {[
                       "Which project demonstrates backend experience?",
                       "How was PostgreSQL used?",
                       "Which requirements need further evidence?",
-                    ].map((q) => (
-                      <button key={q} onClick={() => voice.controller.ask(q)}>
-                        {q}
+                    ].map((q, index) => (
+                      <button
+                        aria-label={q}
+                        key={q}
+                        onClick={() => voice.controller.ask(q)}
+                      >
+                        {
+                          ["Backend experience", "PostgreSQL", "Evidence gaps"][
+                            index
+                          ]
+                        }
                         <ArrowUp size={14} />
                       </button>
                     ))}

@@ -22,6 +22,7 @@ export default async function Match({
         experience—and where questions remain.
       </p>
       <JobMatch
+        key={selected}
         demo={demoSnapshot()}
         judge={judgeSnapshot()}
         initialMode={selected}

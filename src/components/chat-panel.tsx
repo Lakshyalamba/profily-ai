@@ -82,7 +82,11 @@ export function ChatPanel({
   const busy = voice.state.phase === "processing",
     lastAnswer = messages.findLast((m) => m.role === "assistant")?.text || "";
   return (
-    <section className="chat-panel" aria-label="Career conversation">
+    <section
+      id="career-conversation"
+      className="chat-panel"
+      aria-label="Career conversation"
+    >
       <div className="chat-header">
         <span className="small-logo">
           <AudioLines size={19} />
@@ -106,6 +110,7 @@ export function ChatPanel({
       <VoiceControls
         state={voice.state}
         controller={voice.controller}
+        textInputId="question"
         lastAnswer={lastAnswer}
       />
       {mode === "demo" && (

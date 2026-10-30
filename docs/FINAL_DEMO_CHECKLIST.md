@@ -10,7 +10,7 @@ The malformed URL in the refinement request is not the project address. Use the 
 
 - [ ] Use the actual recording computer with Chrome, HTTPS, working microphone and speakers. Close unrelated private tabs and hide credentials.
 - [ ] Open `/profile/judge` in a signed-out/new browser session. Confirm the fictional Jordan label, sample-resume disclosure, real Express repository commit and ten evidence sources.
-- [ ] Physically test **Start voice → allow microphone → speak a question → check transcription → hear the reply**. Verify listening/processing/speaking labels. Then test **Interrupt & ask**, **Mute/Unmute**, **Stop voice**, **Text mode**, and a typed follow-up. Automated voice tests are not microphone or speaker certification.
+- [ ] Physically test **Start voice → allow microphone → speak a question → check transcription → hear the reply**. Verify listening/processing/speaking labels. Then test **Interrupt & ask**, **Mute/Unmute**, **Stop voice**, **Type instead**, and a typed follow-up. Automated voice tests are not microphone or speaker certification.
 - [ ] Download `/samples/fictional-judge-resume.pdf`. In `/create`, consent, upload only that fictional PDF and import `https://github.com/expressjs/express`. Review/edit, select evidence, save and inspect `/profile/private`. Prepare this before recording; do not imply an edited cut is instantaneous processing.
 - [ ] If showing sharing, open `/publish`, review approved fields and excerpts, consent, publish and open the resulting `/p/[id]` in a separate browser. Raw resume pages must not appear. Only use fictional information. Revoke the test link afterward.
 - [ ] Prepare tabs for `/`, `/profile/judge`, `/interview?profile=judge`, `/match?profile=judge`, `/analytics`, and your actual downloaded report. Analytics must show actual saved activity, including zero where appropriate.
@@ -19,15 +19,15 @@ The malformed URL in the refinement request is not the project address. Use the 
 
 ## Recording sequence — maximum 2:00
 
-| Time | Exact page / action | What to establish |
-|---|---|---|
-| 0:00–0:12 | Fictional PDF, then `/` | Static skill lists leave questions about practical work. |
-| 0:12–0:25 | `/profile/judge` | No login; fictional person and real repository evidence clearly distinguished. |
-| 0:25–0:38 | Prepared `/create` review or `/profile/private` | Actual extracted fields are editable and require approval; no automatic public posting. |
-| 0:38–0:58 | `/interview?profile=judge`, consent and start; use **Start voice** | Actually say **“What supports PostgreSQL experience?”** Show real recognized text and processing. |
-| 0:58–1:17 | Active interview, expand the citation mentioning transactions; ask **“Did this developer author Express?”** | Resume support is a self-reported claim. Repository contents do not establish personal authorship. Expand a real pinned repository excerpt if helpful. |
-| 1:17–1:32 | Ask **“What evidence establishes Kubernetes production operations?”** | Show actual insufficient evidence or withheld output. Do not claim unknown experience is proven absent. |
-| 1:32–1:46 | **End & create brief → Download PDF**, or prepared `/match?profile=judge` result | Show the actual questions/sources/report, or supported/partial/not-established role explanations. Label any cut to a previously completed session. |
+| Time      | Exact page / action                                                                                              | What to establish                                                                                                                                                          |
+| --------- | ---------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0:00–0:12 | Fictional PDF, then `/`                                                                                          | Static skill lists leave questions about practical work.                                                                                                                   |
+| 0:12–0:25 | `/profile/judge`                                                                                                 | No login; fictional person and real repository evidence clearly distinguished.                                                                                             |
+| 0:25–0:38 | Prepared `/create` review or `/profile/private`                                                                  | Actual extracted fields are editable and require approval; no automatic public posting.                                                                                    |
+| 0:38–0:58 | `/interview?profile=judge`, consent and start; use **Start voice**                                               | Actually say **“What supports PostgreSQL experience?”** Show real recognized text and processing.                                                                          |
+| 0:58–1:17 | Active interview, expand the citation mentioning transactions; ask **“Did this developer author Express?”**      | Resume support is a self-reported claim. Repository contents do not establish personal authorship. Expand a real pinned repository excerpt if helpful.                     |
+| 1:17–1:32 | Ask **“What evidence establishes Kubernetes production operations?”**                                            | Show actual insufficient evidence or withheld output. Do not claim unknown experience is proven absent.                                                                    |
+| 1:32–1:46 | **End & create brief → Download PDF**, or prepared `/match?profile=judge` result                                 | Show the actual questions/sources/report, or supported/partial/not-established role explanations. Label any cut to a previously completed session.                         |
 | 1:46–2:00 | Genuine **Wispr Insights usage card**, brief real dictation-to-Codex clip if available, then live URL/repository | Say: **“I used Wispr Flow to dictate development instructions into Codex. Runtime voice uses browser speech services.”** There is no Wispr API/SDK integration in Profily. |
 
 ### Job comparison text

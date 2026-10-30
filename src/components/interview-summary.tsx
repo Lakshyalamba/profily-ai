@@ -76,6 +76,20 @@ export function InterviewSummary({ session }: { session: Interview }) {
         uncertainty statements; the complete transcript is available below. It
         is not an independent assessment or a hiring recommendation.
       </p>
+      <div className="brief-overview">
+        <div>
+          <span>Questions recorded</span>
+          <strong>{brief.questions.length}</strong>
+        </div>
+        <div>
+          <span>Preserved sources</span>
+          <strong>{session.snapshot.sources.length}</strong>
+        </div>
+        <div>
+          <span>Unverified notes</span>
+          <strong>{brief.unverified.length}</strong>
+        </div>
+      </div>
       <div className="brief-topics">
         {brief.topics.map((t) => (
           <span key={t.name}>{t.name}</span>

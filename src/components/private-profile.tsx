@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Loader2 } from "lucide-react";
+import { Loader2, UserRound } from "lucide-react";
 import { workspaceSchema, type Snapshot } from "@/types/intelligence";
 import { api, errorMessage } from "@/lib/client-api";
 import { ProfileView } from "./profile-view";
@@ -38,21 +38,25 @@ export function PrivateProfile() {
   if (!profile)
     return (
       <div className="container inner-page">
-        <h1>
-          {error ? "Couldn’t load your profile." : "Your story starts here."}
-        </h1>
-        {error && (
-          <p className="error" role="alert">
-            {error}
+        <div className="eyebrow">YOUR CAREER TWIN</div>
+        <div className="empty-state private-empty">
+          <UserRound size={30} />
+          <h1>
+            {error ? "Couldn’t load your profile." : "Your story starts here."}
+          </h1>
+          {error && (
+            <p className="error" role="alert">
+              {error}
+            </p>
+          )}
+          <p className="page-description">
+            Create, review, and save a private profile to start evidence-backed
+            conversations.
           </p>
-        )}
-        <p className="page-description">
-          Create, review, and save a private profile to start evidence-backed
-          conversations.
-        </p>
-        <Link className="button button-primary" href="/create">
-          Create or load profile
-        </Link>
+          <Link className="button button-primary" href="/create">
+            Create or load profile
+          </Link>
+        </div>
       </div>
     );
   return <ProfileView profile={profile} mode="private" />;

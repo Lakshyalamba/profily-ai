@@ -1,0 +1,193 @@
+{
+  "desktop": [
+    {
+      "path": "/",
+      "scroll": 1497,
+      "width": 1512
+    },
+    {
+      "path": "/create",
+      "scroll": 1497,
+      "width": 1512
+    },
+    {
+      "path": "/profile/private",
+      "scroll": 1497,
+      "width": 1512
+    },
+    {
+      "path": "/publish",
+      "scroll": 1497,
+      "width": 1512
+    },
+    {
+      "path": "/p/83344c98638cd431f95d4e3f96f6be6f",
+      "scroll": 1497,
+      "width": 1512
+    },
+    {
+      "path": "/profile/judge",
+      "scroll": 1497,
+      "width": 1512
+    },
+    {
+      "path": "/profile/demo",
+      "scroll": 1497,
+      "width": 1512
+    },
+    {
+      "path": "/interview?profile=judge",
+      "scroll": 1497,
+      "width": 1512
+    },
+    {
+      "path": "/analytics",
+      "scroll": 1497,
+      "width": 1512
+    }
+  ],
+  "mobile": [
+    {
+      "heading": "Your work.A voice ofits own.",
+      "path": "/",
+      "scroll": 375,
+      "width": 390
+    },
+    {
+      "heading": "Start with your story.",
+      "path": "/create",
+      "scroll": 375,
+      "width": 390
+    },
+    {
+      "heading": "Riley Chen · Fictional QA",
+      "path": "/profile/private",
+      "scroll": 375,
+      "width": 390
+    },
+    {
+      "heading": "Your profile. Your public link.",
+      "path": "/publish",
+      "scroll": 375,
+      "width": 390
+    },
+    {
+      "heading": "Riley Chen · Fictional QA",
+      "path": "/p/83344c98638cd431f95d4e3f96f6be6f",
+      "scroll": 375,
+      "width": 390
+    },
+    {
+      "heading": "Meet the work.Inspect the evidence.",
+      "path": "/profile/judge",
+      "scroll": 375,
+      "width": 390
+    },
+    {
+      "heading": "Alex Morgan",
+      "path": "/profile/demo",
+      "scroll": 375,
+      "width": 390
+    },
+    {
+      "heading": "Ask naturally.Leave with the evidence.",
+      "path": "/interview?profile=judge",
+      "scroll": 375,
+      "width": 390
+    },
+    {
+      "heading": "A role. A profile. The evidence.",
+      "path": "/match?profile=judge",
+      "scroll": 375,
+      "width": 390
+    },
+    {
+      "heading": "Recruiter workspace.",
+      "path": "/analytics",
+      "scroll": 375,
+      "width": 390
+    }
+  ],
+  "additional": [
+    {
+      "path": "/",
+      "scroll": 345,
+      "width": 360
+    },
+    {
+      "path": "/create",
+      "scroll": 345,
+      "width": 360
+    },
+    {
+      "path": "/profile/private",
+      "scroll": 345,
+      "width": 360
+    },
+    {
+      "path": "/publish",
+      "scroll": 345,
+      "width": 360
+    },
+    {
+      "path": "/profile/judge",
+      "scroll": 345,
+      "width": 360
+    },
+    {
+      "path": "/interview?profile=judge",
+      "scroll": 345,
+      "width": 360
+    },
+    {
+      "path": "/match?profile=judge",
+      "scroll": 345,
+      "width": 360
+    },
+    {
+      "path": "/analytics",
+      "scroll": 345,
+      "width": 360
+    },
+    {
+      "path": "/",
+      "scroll": 805,
+      "width": 820
+    },
+    {
+      "path": "/create",
+      "scroll": 805,
+      "width": 820
+    },
+    {
+      "path": "/profile/private",
+      "scroll": 805,
+      "width": 820
+    },
+    {
+      "path": "/publish",
+      "scroll": 805,
+      "width": 820
+    },
+    {
+      "path": "/profile/judge",
+      "scroll": 805,
+      "width": 820
+    },
+    {
+      "path": "/interview?profile=judge",
+      "scroll": 805,
+      "width": 820
+    },
+    {
+      "path": "/match?profile=judge",
+      "scroll": 805,
+      "width": 820
+    },
+    {
+      "path": "/analytics",
+      "scroll": 805,
+      "width": 820
+    }
+  ]
+}

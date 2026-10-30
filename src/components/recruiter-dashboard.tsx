@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import type { Analytics } from "@/lib/interview-metrics";
 import { api, errorMessage } from "@/lib/client-api";
+import { ConfirmAction } from "./confirm-action";
 import { Button } from "./ui/button";
 import { EvidenceNavigation } from "./evidence-navigation";
 import { SourceList, CitationLinks } from "./source-list";
@@ -243,15 +244,17 @@ export function RecruiterDashboard() {
                     {s.status === "completed" ? "View brief" : "Continue"}
                   </Link>
                 </Button>
-                <Button
+                <ConfirmAction
+                  title="Delete this interview?"
+                  description="This removes the saved transcript, evidence snapshot and brief from this browser’s workspace. Downloaded PDFs are not removed."
                   size="icon"
                   variant="ghost"
                   disabled={!!busy}
-                  onClick={() => remove("interviews", s.id)}
+                  onConfirm={() => remove("interviews", s.id)}
                   aria-label={`Delete interview with ${s.candidateName}`}
                 >
                   <Trash2 size={14} />
-                </Button>
+                </ConfirmAction>
               </article>
             ))}
           </div>
@@ -338,15 +341,17 @@ export function RecruiterDashboard() {
                 {match.result.limitations.map((l, i) => (
                   <p key={i}>{l}</p>
                 ))}
-                <Button
+                <ConfirmAction
+                  title="Delete this comparison?"
+                  description="This removes the saved job description, result and preserved evidence from your workspace."
                   variant="ghost"
                   size="sm"
                   disabled={!!busy}
-                  onClick={() => remove("matches", match.id)}
+                  onConfirm={() => remove("matches", match.id)}
                 >
                   <Trash2 size={13} />
                   Delete this saved comparison
-                </Button>
+                </ConfirmAction>
               </div>
             </details>
           ))

@@ -17,6 +17,7 @@ import {
 } from "@/types/intelligence";
 import { api, errorMessage } from "@/lib/client-api";
 import { Button } from "./ui/button";
+import { RequirementBreakdown } from "./requirement-breakdown";
 import { CitationLinks } from "./source-list";
 export function JobMatch({
   demo,
@@ -232,6 +233,7 @@ export function JobMatch({
                       : "PRIVATE PROFILE"}
               </span>
             </div>
+            <RequirementBreakdown requirements={result.requirements} />
             {result.requirements.map((r, i) => (
               <article className="match-result" key={i}>
                 <span

@@ -1,0 +1,54 @@
+{
+  "checkedAt": "2026-10-30T16:35:20.978Z",
+  "routes": [
+    {
+      "route": "/",
+      "status": 200
+    },
+    {
+      "route": "/create",
+      "status": 200
+    },
+    {
+      "route": "/profile/demo",
+      "status": 200
+    },
+    {
+      "route": "/profile/judge",
+      "status": 200
+    },
+    {
+      "route": "/match?profile=judge",
+      "status": 200
+    },
+    {
+      "route": "/interview?profile=judge",
+      "status": 200
+    },
+    {
+      "route": "/profile/private",
+      "status": 200
+    },
+    {
+      "route": "/publish",
+      "status": 200
+    },
+    {
+      "route": "/match",
+      "status": 200
+    },
+    {
+      "route": "/interview?profile=demo",
+      "status": 200
+    },
+    {
+      "route": "/analytics",
+      "status": 200
+    },
+    {
+      "route": "/p/83344c98638cd431f95d4e3f96f6be6f",
+      "status": 200
+    }
+  ],
+  "internalLinksAndAssets": 19
+}

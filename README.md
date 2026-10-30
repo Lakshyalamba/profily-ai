@@ -10,7 +10,7 @@ A static resume rarely explains what a developer personally built, which technic
 
 Unlike a traditional portfolio, this profile answers contextual questions. Unlike a generic resume chatbot, factual answers require source references, exact quote validation, and a separate grounding review. Repository contents establish observations about code, not personal authorship. The system provides qualitative evidence comparisons, not candidate rankings or hiring recommendations. No recruiter outcomes or performance improvements have been measured.
 
-Phase 6 adds a deployed Vercel application, durable Redis storage with distributed write protection and shared AI quotas, and a public judge walkthrough. Existing interface and evidence validation services are preserved. No runtime dependency was added.
+The application is deployed on Vercel with durable Redis storage, distributed write protection, shared AI quotas and a public judge walkthrough. The interface now uses a shared dark design system, self-hosted Manrope typography, responsive workspace navigation and Motion for React. Backend APIs, evidence validation, storage and ownership mechanisms are unchanged by the redesign.
 
 ## Main features
 
@@ -25,7 +25,7 @@ Phase 6 adds a deployed Vercel application, durable Redis storage with distribut
 
 ## Technology stack and architecture
 
-Next.js App Router 16, React 19, TypeScript, Tailwind CSS 4, Lucide icons, owned reusable components using Radix Slot, Zod, Gemini REST `generateContent`, GitHub REST, unpdf, pdf-lib/fontkit, and browser Web Speech APIs. See `package.json` and its lockfile for exact versions. No client-side Gemini key or Wispr Flow SDK is used.
+Next.js App Router 16, React 19, TypeScript, Tailwind CSS 4, Motion for React, self-hosted Manrope (SIL Open Font License), Lucide icons, owned reusable components using Radix Slot, Zod, Gemini REST `generateContent`, GitHub REST, unpdf, pdf-lib/fontkit, and browser Web Speech APIs. See `package.json` and its lockfile for exact versions. No client-side Gemini key or Wispr Flow SDK is used.
 
 ```text
 Browser: profile/editor/chat/interview/match/dashboard
@@ -67,37 +67,37 @@ npm start
 
 ## Environment variables
 
-| Variable                  | Required                                    | Purpose                                                                                                                                            |
-| ------------------------- | ------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `GEMINI_API_KEY`          | For live AI                                 | Server-only Gemini credential; no `NEXT_PUBLIC_` prefix.                                                                                           |
-| `GEMINI_MODEL`            | Optional                                    | Structured-output capable model available to your key; default `gemini-3.1-flash-lite`. Availability/quota depend on the provider account.         |
-| `PROFILY_DATA_DIR`        | Optional locally; persistent path on a host | Private profile directory, default `.data/profiles`; persist its **parent** for sibling activity, public profiles and cache.                       |
-| `GITHUB_TOKEN`            | Optional                                    | Server-only token for public GitHub API quota. Keep permissions minimal; private repositories remain rejected.                                     |
-| `PROFILY_PUBLIC_BASE_URL` | Required behind a self-hosted HTTPS proxy                 | Canonical external origin, e.g. `https://profily.example.com`, without a path. Used for origin validation and secure cookies. Leave blank locally. |
-| `KV_REST_API_URL`, `KV_REST_API_TOKEN` | Required on Vercel | Upstash HTTPS REST URL and write token, supplied by the native integration. Alternative names: `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`. |
-| `PROFILY_STORAGE_PREFIX` | Recommended for Redis | Isolates records, locks, cache and quotas; use separate production and preview namespaces. |
-| `PORT`, `HOSTNAME`        | Standalone runtime                          | Listener configuration; use `HOSTNAME=0.0.0.0` inside a container.                                                                                 |
-| `PROFILY_TEST_URL`        | Optional test setting                       | Running server URL for HTTP verification; default `http://127.0.0.1:3000`.                                                                         |
-| `PROFILY_TEST_LIVE`       | Optional test setting                       | Set `1` to add an actual Gemini public-chat request to `test:public`.                                                                              |
+| Variable                               | Required                                    | Purpose                                                                                                                                              |
+| -------------------------------------- | ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `GEMINI_API_KEY`                       | For live AI                                 | Server-only Gemini credential; no `NEXT_PUBLIC_` prefix.                                                                                             |
+| `GEMINI_MODEL`                         | Optional                                    | Structured-output capable model available to your key; default `gemini-3.1-flash-lite`. Availability/quota depend on the provider account.           |
+| `PROFILY_DATA_DIR`                     | Optional locally; persistent path on a host | Private profile directory, default `.data/profiles`; persist its **parent** for sibling activity, public profiles and cache.                         |
+| `GITHUB_TOKEN`                         | Optional                                    | Server-only token for public GitHub API quota. Keep permissions minimal; private repositories remain rejected.                                       |
+| `PROFILY_PUBLIC_BASE_URL`              | Required behind a self-hosted HTTPS proxy   | Canonical external origin, e.g. `https://profily.example.com`, without a path. Used for origin validation and secure cookies. Leave blank locally.   |
+| `KV_REST_API_URL`, `KV_REST_API_TOKEN` | Required on Vercel                          | Upstash HTTPS REST URL and write token, supplied by the native integration. Alternative names: `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`. |
+| `PROFILY_STORAGE_PREFIX`               | Recommended for Redis                       | Isolates records, locks, cache and quotas; use separate production and preview namespaces.                                                           |
+| `PORT`, `HOSTNAME`                     | Standalone runtime                          | Listener configuration; use `HOSTNAME=0.0.0.0` inside a container.                                                                                   |
+| `PROFILY_TEST_URL`                     | Optional test setting                       | Running server URL for HTTP verification; default `http://127.0.0.1:3000`.                                                                           |
+| `PROFILY_TEST_LIVE`                    | Optional test setting                       | Set `1` to add an actual Gemini public-chat request to `test:public`.                                                                                |
 
 GitHub uses anonymous public access by default. An optional server-only `GITHUB_TOKEN` can provide authenticated public API quota; it is sent only in a header to api.github.com, with redirects rejected. Private repository analysis remains unsupported. Anonymous or authenticated quota can still block imports. There is no Wispr Flow API variable.
 
 ## Key routes and project structure
 
-| Route                     | Purpose                                                            |
-| ------------------------- | ------------------------------------------------------------------ |
-| `/`                       | Product overview and fictional preview                             |
-| `/create`                 | Import, edit, review and save private profile                      |
-| `/profile/private`        | Creator-cookie private career twin                                 |
-| `/publish`                | Approve, update or revoke a public snapshot                        |
-| `/p/[id]`                 | Guest-accessible published profile                                 |
-| `/profile/judge`          | Fictional resume + pinned real GitHub evidence; no sign-in |
+| Route                     | Purpose                                                                     |
+| ------------------------- | --------------------------------------------------------------------------- |
+| `/`                       | Product overview and fictional preview                                      |
+| `/create`                 | Import, edit, review and save private profile                               |
+| `/profile/private`        | Creator-cookie private career twin                                          |
+| `/publish`                | Approve, update or revoke a public snapshot                                 |
+| `/p/[id]`                 | Guest-accessible published profile                                          |
+| `/profile/judge`          | Fictional resume + pinned real GitHub evidence; no sign-in                  |
 | `/profile/demo`           | Original fictional public demonstration                                     |
 | `/interview?profile=demo` | Start consented interview; also accepts `judge`, `private` or `public-<id>` |
-| `/interview/[id]`         | Recruiter-cookie transcript, brief and PDF                         |
-| `/match?profile=demo`     | Job comparison; same profile references supported                  |
-| `/analytics`              | This browser’s recorded recruiter activity                         |
-| `/api/status`             | Configuration presence/model status; never returns the key         |
+| `/interview/[id]`         | Recruiter-cookie transcript, brief and PDF                                  |
+| `/match?profile=demo`     | Job comparison; same profile references supported                           |
+| `/analytics`              | This browser’s recorded recruiter activity                                  |
+| `/api/status`             | Configuration presence/model status; never returns the key                  |
 
 ```text
 src/
@@ -106,6 +106,8 @@ src/
                         publish, public/[id], interviews, analytics
   components/           Editor, profile, publishing, shared conversation,
                         voice controls, interviews, summaries, dashboard
+  styles/               Shared tokens, shell, landing, workspace, profile,
+                        conversation and reporting styles
   hooks/use-voice.ts     React adapter to browser voice controller
   lib/ai/               Career responses and explicitly scripted demo
   lib/server/           Gemini, grounding, retrieval, ingestion, private /
@@ -117,6 +119,7 @@ src/
 scripts/                Isolated PDF worker and live workflow checks
 tests/                  Automated tests and synthetic resume fixture
 assets/fonts/           Licensed PDF fonts
+assets/webfonts/manrope/ Licensed self-hosted interface font
 vercel.json             Vercel Node deployment and region
 .github/workflows/ci.yml Node 24 checks on push / pull request
 Dockerfile, compose.yaml, .dockerignore
@@ -139,7 +142,7 @@ npm run test:routes      # Main pages, internal links/assets and empty anchors
 PROFILY_TEST_LIVE=1 npm run test:public
 ```
 
-Live checks consume provider quota. They use their own cookie and clean up their temporary records. Tests report provider errors and never substitute a scripted result for successful live verification. See [final refinement verification](docs/FINAL_REFINEMENT.md) and [Phase 6 verification](docs/VERIFICATION-PHASE-6.md) for actual outcomes and remaining manual checks, and [the two-minute demo script](docs/DEMO_SCRIPT.md) for exact screens and narration.
+Live checks consume provider quota. They use their own cookie and clean up their temporary records. Tests report provider errors and never substitute a scripted result for successful live verification. See [UI redesign verification](docs/UI_REDESIGN.md), [final refinement verification](docs/FINAL_REFINEMENT.md) and [Phase 6 verification](docs/VERIFICATION-PHASE-6.md) for actual outcomes and remaining manual checks, and [the two-minute demo script](docs/DEMO_SCRIPT.md) for exact screens and narration.
 
 ## Development with Codex and Wispr Flow
 
@@ -161,7 +164,11 @@ The project owner reports using **Wispr Flow to dictate development instructions
 
 ## Screenshots and actual sample result
 
-![Deployed fictional judge profile](docs/phase-six/deployed-judge-desktop.jpg)
+![Redesigned landing page](docs/ui-redesign/live-home-desktop.jpg)
+
+![Redesigned fictional judge profile](docs/ui-redesign/live-judge-desktop.jpg)
+
+[Before redesign](docs/ui-redesign/before-judge-desktop.jpg) · [Mobile judge profile](docs/ui-redesign/live-judge-mobile.jpg)
 
 [Final mobile job comparison](docs/refinement/job-result-mobile.jpg) · [Final desktop comparison](docs/refinement/job-result-desktop.jpg)
 

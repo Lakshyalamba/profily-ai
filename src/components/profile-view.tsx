@@ -4,6 +4,8 @@ import {
   Layers3,
   FileText,
   ShieldCheck,
+  BriefcaseBusiness,
+  GraduationCap,
 } from "lucide-react";
 import Link from "next/link";
 import type { Snapshot } from "@/types/intelligence";
@@ -54,51 +56,87 @@ export function ProfileView({
           </>
         )}
       </div>
+      <section className="profile-intro">
+        <div className="profile-person-row">
+          <div className="avatar avatar-large">{initials}</div>
+        </div>
+        <h1>{candidate.name}</h1>
+        <h2>{candidate.headline}</h2>
+        <p className="location">
+          {synthetic
+            ? mode === "judge"
+              ? "Fictional sample candidate · not a real application"
+              : "Bengaluru, India · Fictional candidate"
+            : "Reviewed profile · employment and authorship are not independently verified"}
+        </p>
+        {mode === "demo" && (
+          <p>
+            I build accessible interfaces and dependable APIs. I’m looking for
+            an internship where I can turn complex problems into useful,
+            well-crafted software.
+          </p>
+        )}
+        <div className="preview-tags">
+          {candidate.skills
+            .split(/[,\n]/)
+            .map((s) => s.trim())
+            .filter(Boolean)
+            .map((s, i) => (
+              <span key={i}>{s}</span>
+            ))}
+        </div>
+        <p className="evidence-note">
+          <ShieldCheck size={14} />
+          {synthetic
+            ? "Sample skills · not independently verified"
+            : "Developer-provided skills · inspect supporting evidence below"}
+        </p>
+        <div className="profile-hero-aside">
+          <span className="tiny-label">INTERACTIVE CAREER PROFILE</span>
+          <span className="profile-voice-mark">
+            <AudioLines size={30} />
+          </span>
+          <h3>
+            Ask. Inspect.
+            <br />
+            Follow up.
+          </h3>
+          <p>A conversation about the work, with the sources in view.</p>
+          <Button asChild size="sm">
+            <Link href={`/interview?profile=${mode}`}>
+              Start an interview <ArrowUpRight size={14} />
+            </Link>
+          </Button>
+        </div>
+        <div className="profile-counts">
+          {mode === "demo" && (
+            <span className="availability">Open to internships</span>
+          )}
+          <span>
+            <Layers3 size={15} />
+            {candidate.projects.length}{" "}
+            {candidate.projects.length === 1 ? "project" : "projects"}
+          </span>
+          <a href="#evidence">
+            <FileText size={15} />
+            {profile.sources.length} evidence{" "}
+            {profile.sources.length === 1 ? "source" : "sources"}{" "}
+            <ArrowUpRight size={13} />
+          </a>
+          <a className="profile-ask-link" href="#career-conversation">
+            Ask the career twin <ArrowUpRight size={14} />
+          </a>
+        </div>
+      </section>
       <div className="profile-layout">
         <div className="profile-content">
-          <section className="profile-intro">
-            <div className="profile-person-row">
-              <div className="avatar avatar-large">{initials}</div>
-              {mode === "demo" && (
-                <span className="availability">Open to internships</span>
-              )}
-            </div>
-            <h1>{candidate.name}</h1>
-            <h2>{candidate.headline}</h2>
-            <p className="location">
-              {synthetic
-                ? mode === "judge"
-                  ? "Fictional sample candidate · not a real application"
-                  : "Bengaluru, India · Fictional candidate"
-                : "Reviewed profile · employment and authorship are not independently verified"}
-            </p>
-            {mode === "demo" && (
-              <p>
-                I build accessible interfaces and dependable APIs. I’m looking
-                for an internship where I can turn complex problems into useful,
-                well-crafted software.
-              </p>
-            )}
-            <div className="preview-tags">
-              {candidate.skills
-                .split(/[,\n]/)
-                .map((s) => s.trim())
-                .filter(Boolean)
-                .map((s, i) => (
-                  <span key={i}>{s}</span>
-                ))}
-            </div>
-            <p className="evidence-note">
-              <ShieldCheck size={14} />
-              {synthetic
-                ? "Sample skills · not independently verified"
-                : "Developer-provided skills · inspect supporting evidence below"}
-            </p>
-          </section>
           <section className="profile-section">
             <div className="section-title">
               <h2>Selected work</h2>
-              <span>{candidate.projects.length} PROJECTS</span>
+              <span>
+                {candidate.projects.length}{" "}
+                {candidate.projects.length === 1 ? "PROJECT" : "PROJECTS"}
+              </span>
             </div>
             {candidate.projects.length === 0 && (
               <p className="muted">
@@ -108,8 +146,15 @@ export function ProfileView({
             {candidate.projects.map((project, i) => (
               <article key={project.id} className="project-card">
                 <div className={`project-art art-${i % 3}`}>
-                  <Layers3 size={28} />
-                  <span>{project.name}</span>
+                  <span className="project-art-index">
+                    PROJECT / {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="project-art-icon">
+                    <Layers3 size={34} />
+                  </span>
+                  <span className="project-art-tech">
+                    {project.stack[0] || "Project"}
+                  </span>
                   <span className="art-code">
                     {synthetic ? "sample.project()" : "reviewed.project()"}
                   </span>
@@ -191,9 +236,22 @@ export function ProfileView({
               <span>{synthetic ? "SAMPLE RESUME" : "REVIEWED CLAIMS"}</span>
             </div>
             <div className="resume-block">
-              <h3>Learning by building.</h3>
-              <p>{candidate.experience || "No work experience provided."}</p>
-              <p>{candidate.education || "No education provided."}</p>
+              <div className="timeline-row">
+                <BriefcaseBusiness size={19} />
+                <div>
+                  <h3>Professional experience</h3>
+                  <p>
+                    {candidate.experience || "No work experience provided."}
+                  </p>
+                </div>
+              </div>
+              <div className="timeline-row">
+                <GraduationCap size={19} />
+                <div>
+                  <h3>Education</h3>
+                  <p>{candidate.education || "No education provided."}</p>
+                </div>
+              </div>
               <a className="citation" href="#evidence">
                 Inspect source claims ↗
               </a>
