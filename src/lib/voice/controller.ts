@@ -187,9 +187,11 @@ export class VoiceController {
       }
     }, this.permissionTimeoutMs);
     recognition.onstart = () => {
+      // A queued event from an aborted recognizer must not cancel a newer watchdog.
+      if (epoch !== this.epoch || this.disposed) return;
       if (this.permissionTimer) clearTimeout(this.permissionTimer);
       this.permissionTimer = null;
-      if (epoch === this.epoch) this.patch({ phase: "listening" });
+      this.patch({ phase: "listening" });
     };
     recognition.onresult = (event) => {
       if (epoch !== this.epoch || submitted) return;
@@ -221,6 +223,8 @@ export class VoiceController {
     };
     recognition.onend = () => {
       if (epoch !== this.epoch || submitted) return;
+      if (this.permissionTimer) clearTimeout(this.permissionTimer);
+      this.permissionTimer = null;
       this.recognition = null;
       this.patch({
         phase: "idle",

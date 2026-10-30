@@ -170,3 +170,34 @@ test("an unanswered microphone permission request times out without trapping tex
   assert.equal(voice.snapshot().phase, "idle");
   voice.dispose();
 });
+
+test("a stale recognition start cannot disable the next microphone-permission timeout", async () => {
+  const recognizers: FakeRecognition[] = [];
+  const voice = new VoiceController(
+    () => ({
+      recognition: () => {
+        const recognition = new FakeRecognition();
+        recognition.start = () => {};
+        recognizers.push(recognition);
+        return recognition;
+      },
+      speak: null,
+      cancel() {},
+    }),
+    async () => "Typed fallback answer",
+    5,
+  );
+  voice.mount();
+  voice.start();
+  const oldStart = recognizers[0].onstart;
+  voice.stop();
+  voice.start();
+  oldStart?.(); // The old browser event was queued before its handlers were removed.
+  await new Promise((resolve) => setTimeout(resolve, 20));
+  assert.equal(voice.snapshot().phase, "idle");
+  assert.equal(voice.snapshot().active, false);
+  assert.match(voice.snapshot().error, /permission was not confirmed/);
+  await voice.ask("Continue by typing");
+  assert.equal(voice.snapshot().phase, "idle");
+  voice.dispose();
+});

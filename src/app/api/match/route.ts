@@ -1,7 +1,6 @@
 import { profileModeSchema } from "@/types/intelligence";
 import { randomUUID } from "node:crypto";
 import { updateActivity } from "@/lib/server/activity-store";
-import { requireSession } from "@/lib/server/store";
 import { z } from "zod";
 import {
   failure,
@@ -10,7 +9,7 @@ import {
   sameOrigin,
   aiRateLimit,
 } from "@/lib/server/http";
-import { sessionId } from "@/lib/server/store";
+import { sessionId, newSession, setSession } from "@/lib/server/store";
 import { profileFor } from "@/lib/server/profiles";
 import { matchJob } from "@/lib/ai/career";
 export const runtime = "nodejs";
@@ -18,7 +17,8 @@ export const maxDuration = 300;
 export async function POST(request: Request) {
   try {
     sameOrigin(request);
-    await aiRateLimit(sessionId(request) ?? "anonymous");
+    const owner = sessionId(request) || newSession();
+    await aiRateLimit(owner);
     const input = z
       .object({
         description: z.string().trim().min(20).max(15000),
@@ -28,10 +28,9 @@ export async function POST(request: Request) {
         revision: z.string().max(100).optional(),
       })
       .parse(await readJson(request));
-    const owner = input.saveResult ? requireSession(request) : null;
     const profile = await profileFor(request, input.profile, input.revision);
     const result = await matchJob(profile, input.description);
-    if (owner)
+    if (input.saveResult)
       await updateActivity(owner, (data) => {
         const id = input.requestId || randomUUID();
         if (data.matches.some((m) => m.id === id)) return data;
@@ -57,7 +56,15 @@ export async function POST(request: Request) {
           ].slice(-30),
         };
       });
-    return json({ ...result, revision: profile.revision, recorded: !!owner });
+    return setSession(
+      json({
+        ...result,
+        revision: profile.revision,
+        recorded: input.saveResult,
+      }),
+      owner,
+      request,
+    );
   } catch (e) {
     return failure(e);
   }

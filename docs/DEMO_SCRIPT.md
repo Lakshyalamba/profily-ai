@@ -1,5 +1,7 @@
 # Two-minute hackathon demo
 
+Use the [final preflight and exact-page checklist](FINAL_DEMO_CHECKLIST.md) before recording.
+
 Record at https://profily-ai.vercel.app. Use only the fictional Jordan judge profile. Preflight microphone permission, audible playback and provider quota on the recording browser. Prepare tabs and a completed **actual** judge interview/report before recording; identify any cut to a previously completed session. Do not fabricate latency, transcripts, speech input, evidence or Wispr usage. Keep the final video at or below 2:00.
 
 | Time | Show / action | Narration |

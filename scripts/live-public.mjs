@@ -1,5 +1,6 @@
 // Real HTTP publication workflow with synthetic data and an independent guest cookie.
 import assert from "node:assert/strict";
+import { randomUUID } from "node:crypto";
 import { writeFile } from "node:fs/promises";
 const base = process.env.PROFILY_TEST_URL || "http://127.0.0.1:3000";
 let owner = "",
@@ -111,6 +112,40 @@ try {
     candidate.name,
   );
   checks.push("Private edits do not silently alter published snapshot");
+  if (process.env.PROFILY_TEST_LIVE === "1") {
+    // Start with no cookie: visiting a public page must not require creator authentication.
+    const matchId = randomUUID();
+    const response = await fetch(base + "/api/match", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", connection: "close" },
+      body: JSON.stringify({
+        profile: mode,
+        revision: snapshot.revision,
+        saveResult: true,
+        requestId: matchId,
+        description:
+          "Internship requires TypeScript and PostgreSQL persistence; Kubernetes operations.",
+      }),
+      signal: AbortSignal.timeout(290000),
+    });
+    const value = await response.json();
+    assert.equal(response.status, 200, value.error);
+    assert.equal(value.recorded, true);
+    guest = response.headers.get("set-cookie")?.split(";")[0] || "";
+    assert.ok(guest && guest !== owner);
+    assert.equal(
+      (await call("/api/analytics", undefined, "guest")).savedMatches,
+      1,
+    );
+    assert.equal(
+      (await call("/api/analytics", undefined, "owner")).savedMatches,
+      0,
+    );
+    await call("/api/matches/" + matchId, undefined, "guest", "DELETE");
+    checks.push(
+      "A cookie-free public guest can consent to save a real Gemini job comparison in an isolated recruiter session",
+    );
+  }
   const interview = await call(
     "/api/interviews",
     { profile: mode, revision: snapshot.revision, consent: true },
