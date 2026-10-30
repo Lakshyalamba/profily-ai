@@ -1,0 +1,40 @@
+{
+  "checkedAt": "2026-10-30T12:32:38.625865+00:00",
+  "method": "Chrome browser rendered DOM plus screenshots",
+  "checks": [
+    {
+      "view": "landing",
+      "viewportWidth": 360,
+      "scrollWidth": 345
+    },
+    {
+      "view": "editor",
+      "viewportWidth": 360,
+      "scrollWidth": 345,
+      "formBeforeSidebar": true
+    },
+    {
+      "view": "judge",
+      "viewportWidth": 390,
+      "scrollWidth": 375
+    },
+    {
+      "view": "interview brief",
+      "viewportWidth": 390,
+      "scrollWidth": 375
+    },
+    {
+      "view": "job comparison",
+      "viewportWidth": 390,
+      "scrollWidth": 375
+    },
+    {
+      "view": "analytics",
+      "viewportWidth": 360,
+      "scrollWidth": 345
+    }
+  ],
+  "mobileMenuClosedAfterNavigation": true,
+  "physicalDeviceTest": false,
+  "viewportRestored": true
+}

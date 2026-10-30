@@ -1,0 +1,9 @@
+{
+  "trackedFilesScanned": 157,
+  "privateCredentialValuesChecked": 7,
+  "secretMatches": 0,
+  "privateEnvironmentAndDataTracked": false,
+  "deployedBundlesChecked": 12,
+  "geminiKeyExposedInDeployedBundles": false,
+  "foreignOriginMutationStatus": 403
+}

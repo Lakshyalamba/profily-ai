@@ -160,7 +160,7 @@ The project owner reports using **Wispr Flow to dictate development instructions
 
 ## Screenshots and actual sample result
 
-![Deployed fictional judge interview](docs/phase-six/deployed-interview.jpg)
+![Deployed fictional judge profile](docs/phase-six/deployed-judge-desktop.jpg)
 
 [Mobile judge walkthrough](docs/phase-six/deployed-judge-mobile.jpg) · [Actual deployed interview PDF, fictional candidate](docs/phase-six/judge-interview.pdf)
 

@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-10-30T12:32:12.989Z",
+  "target": "https://profily-ai.vercel.app",
+  "deployment": "dpl_H15fgUhu77yWaztWLuWT1PXengbZ",
+  "applicationCommit": "f89440a",
+  "storage": "durable-redis",
+  "liveJudgeChat": true,
+  "checkedCitationOrWithheld": true,
+  "publicJudgeStatus": 200,
+  "productionBundlesChecked": 12,
+  "geminiKeyExposed": false,
+  "jobComparisonBrowserVerified": true,
+  "jobQuotePromptConflictResolved": true,
+  "physicalVoiceRoundTripVerified": false
+}

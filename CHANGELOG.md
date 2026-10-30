@@ -1,3 +1,11 @@
+# Phase six — final hackathon preparation
+
+Preserved the existing product design and server-side evidence pipeline. Deployed the application to Vercel with durable Upstash Redis, fenced cross-instance updates, shared AI quotas and secure HTTPS session handling. Added the no-sign-in fictional judge profile with pinned real Express evidence, 4 MB PDF limits, mobile form/menu polish, corrected job requirement quote instructions and bounded correction, public source CI, and final submission documentation.
+
+TypeScript, lint, 49 automated tests, production build and the final application-code GitHub CI passed. Real hosted ingestion, conversation, interviews, PDF export, job comparison, analytics and independent public sharing were checked. Physical voice recognition and audible playback remain an owner check, and no hackathon entry was submitted. See [Phase 6 verification](docs/VERIFICATION-PHASE-6.md) for exact scope and limitations.
+
+---
+
 # Phase three changes
 
 The phase one and two visual identity, input/evidence services, server-only Gemini boundary, and private profile behavior are preserved.
