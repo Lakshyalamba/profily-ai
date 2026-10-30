@@ -162,7 +162,7 @@ export default function Home() {
               Review your information before sharing it.
             </p>
             <span className="feature-caption">
-              Private local drafts available
+              Reviewed private drafts
             </span>
           </article>
           <article className="feature">
@@ -175,7 +175,7 @@ export default function Home() {
               Explore technical decisions and relevant experience through
               focused questions and evidence-linked answers.
             </p>
-            <Link href="/profile/demo">
+            <Link href="/profile/judge">
               Try the demo <ArrowRight size={14} />
             </Link>
           </article>
@@ -205,13 +205,13 @@ export default function Home() {
           <p>See what an evidence-backed career conversation can feel like.</p>
         </div>
         <Button asChild>
-          <Link href="/profile/demo">
+          <Link href="/profile/judge">
             Explore the example <ArrowUpRight size={17} />
           </Link>
         </Button>
       </section>
       <div className="container honesty">
-        <Sparkles size={14} /> Phase three: voice conversations, recorded
+        <Sparkles size={14} /> Voice conversations, recorded
         interviews, evidence-backed briefs, and PDF export. The example profile
         remains fictional.
       </div>
