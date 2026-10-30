@@ -1,0 +1,13 @@
+{
+  "checkedAt": "2026-10-30T11:32:44.002Z",
+  "realRedis": true,
+  "distributedQuotaEnforced": true,
+  "lostLeaseWriteRejected": true,
+  "independentProcesses": 2,
+  "noLostUpdates": true,
+  "publishedSnapshotReadBack": true,
+  "interviewPersistence": true,
+  "revocation": true,
+  "ttlEnforced": true,
+  "target": "Real Upstash database, isolated QA namespace"
+}

@@ -376,3 +376,63 @@ test("a grounded job report can contain requirements with missing evidence", asy
     else delete process.env.GEMINI_API_KEY;
   }
 });
+
+test("job matching corrects a paraphrased requirement once and still requires exact source quotes", async () => {
+  const { matchJob } = await import("../src/lib/ai/career");
+  const { demoSnapshot } = await import("../src/lib/server/profiles");
+  const originalFetch = globalThis.fetch;
+  const oldKey = process.env.GEMINI_API_KEY;
+  process.env.GEMINI_API_KEY = "test-only";
+  let calls = 0;
+  try {
+    globalThis.fetch = async () => {
+      const step = calls++;
+      const value =
+        step < 2
+          ? {
+              requirements: [
+                {
+                  requirement: "Kubernetes operations",
+                  requirementQuote:
+                    step === 0
+                      ? "Operate production Kubernetes"
+                      : "Kubernetes operations",
+                  status: "not_established",
+                  explanation:
+                    "The supplied evidence does not establish this experience.",
+                  citations: [],
+                },
+              ],
+              limitations: ["Bounded source evidence."],
+            }
+          : {
+              grounded: true,
+              reason: "Missing evidence is correctly disclosed.",
+            };
+      return new Response(
+        JSON.stringify({
+          candidates: [
+            {
+              finishReason: "STOP",
+              content: { parts: [{ text: JSON.stringify(value) }] },
+            },
+          ],
+        }),
+      );
+    };
+    const report = await matchJob(
+      demoSnapshot(),
+      "Requirements: Kubernetes operations.",
+    );
+    assert.equal(calls, 3);
+    assert.equal(
+      report.requirements[0].requirementQuote,
+      "Kubernetes operations",
+    );
+    assert.equal(report.requirements[0].status, "not_established");
+  } finally {
+    globalThis.fetch = originalFetch;
+    if (oldKey) process.env.GEMINI_API_KEY = oldKey;
+    else delete process.env.GEMINI_API_KEY;
+  }
+});

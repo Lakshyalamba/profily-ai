@@ -17,11 +17,12 @@ async function call(
   const response = await fetch(base + path, {
     method,
     headers: {
+      connection: "close",
       ...(cookie ? { cookie } : {}),
       ...(body ? { "Content-Type": "application/json" } : {}),
     },
     ...(body ? { body: JSON.stringify(body) } : {}),
-    signal: AbortSignal.timeout(180000),
+    signal: AbortSignal.timeout(290000),
   });
   const next = response.headers.get("set-cookie")?.split(";")[0];
   if (next) {

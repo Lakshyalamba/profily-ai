@@ -9,8 +9,12 @@ async function call(path, init = {}) {
   const start = Date.now();
   const r = await fetch(base + path, {
     ...init,
-    headers: { ...init.headers, ...(cookie ? { cookie } : {}) },
-    signal: AbortSignal.timeout(230000),
+    headers: {
+      connection: "close",
+      ...init.headers,
+      ...(cookie ? { cookie } : {}),
+    },
+    signal: AbortSignal.timeout(290000),
   });
   if (r.headers.get("set-cookie"))
     cookie = r.headers.get("set-cookie").split(";")[0];
@@ -138,9 +142,15 @@ try {
     }),
   );
   assert.ok(
-    unknown.unknowns.length || unknown.withheld ||
-    unknown.paragraphs.some((p) => /no evidence|not (?:supported|established|claimed)|insufficient|does not (?:support|establish)|cannot (?:verify|confirm)/i.test(p.text)),
-    "Unsupported achievements must be explicitly uncertain: " + JSON.stringify(unknown),
+    unknown.unknowns.length ||
+      unknown.withheld ||
+      unknown.paragraphs.some((p) =>
+        /no evidence|not (?:supported|established|claimed)|insufficient|does not (?:support|establish)|cannot (?:verify|confirm)/i.test(
+          p.text,
+        ),
+      ),
+    "Unsupported achievements must be explicitly uncertain: " +
+      JSON.stringify(unknown),
   );
   checks.push(
     "Unsupported achievements produce explicit insufficient-evidence messaging",

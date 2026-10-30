@@ -1,0 +1,30 @@
+{
+  "verifiedAt": "2026-10-30T12:18:57.837Z",
+  "checks": [
+    "Guest-accessible fictional profile opens",
+    "Fresh recruiter session shows zero actual activity",
+    "Explicit transcript consent creates an interview with a frozen profile snapshot",
+    "Interview access is isolated between browser sessions",
+    "Real Gemini interview answer contains server-checked evidence citations",
+    "Follow-up uses the server-recorded conversation history",
+    "A replayed request does not duplicate a question or analytics",
+    "Unsupported experience stays explicitly unverified",
+    "Ending automatically compiles a grounded brief from all recorded questions",
+    "Completed interview exports a real downloadable PDF",
+    "Opted-in live Gemini job matching is recorded in the same recruiter dashboard",
+    "Analytics match the actual three text turns, one interview and one saved comparison"
+  ],
+  "summaryMethod": "compiled-evidence",
+  "questions": 3,
+  "pdfBytes": 28349,
+  "counts": {
+    "sessions": 1,
+    "turns": 3,
+    "voice": 0,
+    "matches": 1
+  },
+  "limitations": [
+    "Live workflow used text; physical speech recognition and audible playback are not attested."
+  ],
+  "target": "https://profily-ai.vercel.app"
+}

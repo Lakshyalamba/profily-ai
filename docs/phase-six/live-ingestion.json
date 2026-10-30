@@ -1,0 +1,16 @@
+{
+  "verifiedAt": "2026-10-30T12:06:17.372Z",
+  "model": "gemini-3.1-flash-lite",
+  "repository": "https://github.com/expressjs/express",
+  "commit": "1c6f1b0fe4000977b9a7b4f34097e4d527dd9824",
+  "checks": [
+    "Live PDF text extraction and Gemini structuring with references; no automatic save",
+    "Live public Express repository retrieval and Gemini analysis pinned to a commit",
+    "Explicit review/save creates a private snapshot",
+    "Live contextual chat returns checked source citations",
+    "Follow-up chat processes conversation history",
+    "Unsupported achievements produce explicit insufficient-evidence messaging",
+    "Live job requirement extraction, status assessment, and cited explanations"
+  ],
+  "target": "https://profily-ai.vercel.app"
+}

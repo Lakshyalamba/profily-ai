@@ -158,6 +158,12 @@ The project owner reports using **Wispr Flow to dictate development instructions
 - **Reports:** briefs compile existing checked answers rather than independently verifying candidates; skill counts are keyword mentions, not proficiency. PDFs use bundled font coverage and show unsupported characters as `[U+XXXX]`. No audio recording is provided; consented text transcripts and PDF export record the answers.
 - **Demo:** all Alex Morgan and Jordan Ellis candidate information and test resumes are synthetic; the judge profile clearly distinguishes real Express repository observations. No users, testimonials, hiring outcomes, accuracy percentages or speed improvements are claimed.
 
+## Screenshots and actual sample result
+
+![Deployed fictional judge interview](docs/phase-six/deployed-interview.jpg)
+
+[Mobile judge walkthrough](docs/phase-six/deployed-judge-mobile.jpg) · [Actual deployed interview PDF, fictional candidate](docs/phase-six/judge-interview.pdf)
+
 ## Deployment and submission
 
 The application is deployed at **https://profily-ai.vercel.app**. See [deployment instructions](docs/DEPLOYMENT.md), [verification evidence](docs/VERIFICATION-PHASE-6.md), [two-minute recording script](docs/DEMO_SCRIPT.md), [submission description](docs/SUBMISSION_DESCRIPTION.md), and [submission checklist](docs/SUBMISSION_CHECKLIST.md). A deployed app is not a submitted hackathon entry. The owner must record the video, supply a genuine Wispr Insights usage card and review the submission before sending it.

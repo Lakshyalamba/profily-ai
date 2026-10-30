@@ -1488,7 +1488,7 @@ textarea:focus {
     grid-template-columns: 1fr;
   }
   .draft-sidebar {
-    order: -1;
+    order: 1;
   }
   .form-card {
     padding: 20px;

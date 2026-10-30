@@ -18,11 +18,11 @@ The current page's core materials list includes project, video, usage card and e
 
 ## Repository and demonstration readiness
 
-- [ ] Confirm https://github.com/Lakshyalamba/profily-ai is public, populated and its CI is green.
-- [ ] Open live judge link signed out; inspect real repository provenance and a live answer citation.
+- [x] Public repository populated; initial CI passed. Confirm latest commit checks before recording.
+- [x] Opened live judge link without a sign-in; inspected provenance and a live answer citation.
 - [ ] On the actual recording machine, verify audible speech recognition → Gemini answer → spoken reply, interruption and text fallback. Automated controller checks do not establish a physical voice round-trip.
 - [ ] Use only fictional candidate material unless a real candidate has explicitly approved publication.
-- [ ] Download an actual interview PDF and inspect its content; check unsupported qualifications remain uncertain.
+- [x] Downloaded and visually inspected an actual two-page fictional interview PDF; live unsupported-skill checks passed.
 - [ ] Review README, deployed URL, provider quotas and remaining limitations. Keep API keys and environment files private.
 
 ## Optional supporting material

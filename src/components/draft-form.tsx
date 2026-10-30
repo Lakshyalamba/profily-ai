@@ -663,12 +663,11 @@ export function DraftForm() {
           not rewrite the original evidence.
         </p>
         <div className="sidebar-divider" />
-        <h3>Private, on this device’s server.</h3>
+        <h3>Private until you approve sharing.</h3>
         <p>
-          Profiles expire seven days after the last import or save. Expired
-          files are removed on next access. They are stored in a private,
-          unencrypted server folder, accessible by this browser’s session
-          cookie.
+          Profiles expire seven days after the last import or save. Access is
+          tied to this browser’s session cookie. There is no account recovery;
+          keep the cookie to manage your workspace and public link.
         </p>
         <span className="demo-badge">PRIVATE UNTIL YOU CHOOSE TO PUBLISH</span>
       </aside>

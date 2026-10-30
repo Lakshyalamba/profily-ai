@@ -99,40 +99,47 @@ export async function matchJob(
   const sources = relevantSources(profile.sources, description);
   let feedback = "";
   for (let attempt = 0; attempt < 2; attempt++) {
-    const generated = await generateCited(
-      matchOutputSchema,
-      `Extract distinct material technical, education and experience requirements from the complete job description (at most 25; disclose aggregation). Include requirementQuote copied verbatim from the job description. Assess supported, partial, or not_established against evidence, including requirements without evidence. Each explanation must name whether support is a self-reported resume/developer claim or an observed repository feature. A repository belonging to someone else proves no candidate experience. Do not attribute repository features to the candidate. Partial means incomplete relevant support. A technology name in a skill list does not establish more specific capabilities: PostgreSQL listed alone can support a self-reported PostgreSQL familiarity requirement, but PostgreSQL data modeling, performance tuning, migrations or production operations must be partial unless the required scope is actually evidenced. Not established means missing evidence, never proven lack of ability. Sources are a bounded retrieved subset; disclose this coverage limit. No score or hiring recommendation. Cite exact source span IDs for supported/partial items. Keep explanations concise and disclose limits. ${feedback ? "The previous report was rejected by the grounding reviewer. Correct these problems conservatively, without inventing support: " + feedback : ""}`,
-      { description, candidate: profile.candidate },
-      sources,
-    );
-    const result = calibrateSkillListSupport(generated, profile.sources);
-    for (const r of result.requirements) {
-      if (!normalize(description).includes(normalize(r.requirementQuote)))
-        throw new AppError(
-          502,
-          "INVENTED_REQUIREMENT",
-          "A requirement could not be traced to the job description. Please retry.",
-        );
-      validateCitations(r.citations, profile.sources);
-      if (r.status !== "not_established" && !r.citations.length)
-        throw new AppError(
-          502,
-          "UNCITED_REQUIREMENT",
-          "A supported requirement had no evidence. Please retry.",
-        );
-    }
     try {
+      const generated = await generateCited(
+        matchOutputSchema,
+        `Extract distinct material technical, education and experience requirements from the complete job description (at most 25; disclose aggregation). Include requirementQuote copied verbatim from the job description. Assess supported, partial, or not_established against evidence, including requirements without evidence. Each explanation must name whether support is a self-reported resume/developer claim or an observed repository feature. A repository belonging to someone else proves no candidate experience. Do not attribute repository features to the candidate. Partial means incomplete relevant support. A technology name in a skill list does not establish more specific capabilities: PostgreSQL listed alone can support a self-reported PostgreSQL familiarity requirement, but PostgreSQL data modeling, performance tuning, migrations or production operations must be partial unless the required scope is actually evidenced. Not established means missing evidence, never proven lack of ability. Sources are a bounded retrieved subset; disclose this coverage limit. No score or hiring recommendation. Cite exact source span IDs for supported/partial items. Keep explanations concise and disclose limits. ${feedback ? "The previous report was rejected by the grounding reviewer. Correct these problems conservatively, without inventing support: " + feedback : ""}`,
+        { description, candidate: profile.candidate },
+        sources,
+      );
+      const result = calibrateSkillListSupport(generated, profile.sources);
+      for (const r of result.requirements) {
+        if (!normalize(description).includes(normalize(r.requirementQuote)))
+          throw new AppError(
+            502,
+            "INVENTED_REQUIREMENT",
+            "A requirement could not be traced to the job description. Please retry.",
+          );
+        validateCitations(r.citations, profile.sources);
+        if (r.status !== "not_established" && !r.citations.length)
+          throw new AppError(
+            502,
+            "UNCITED_REQUIREMENT",
+            "A supported requirement had no evidence. Please retry.",
+          );
+      }
       await verify(sources, result, description);
       return result;
     } catch (error) {
       if (
         error instanceof AppError &&
-        error.code === "GROUNDING_REJECTED" &&
+        [
+          "GROUNDING_REJECTED",
+          "INVENTED_REQUIREMENT",
+          "UNCITED_REQUIREMENT",
+          "UNGROUNDED_OUTPUT",
+        ].includes(error.code) &&
         attempt === 0
       ) {
         feedback =
           error.detail ||
-          "Remove unsupported claims and distinguish self-reports from repository observations.";
+          (error.code === "INVENTED_REQUIREMENT"
+            ? "Every requirementQuote must be an exact contiguous substring of the supplied job description. Do not paraphrase, normalize case or append instructions. Re-extract only actual requirements."
+            : "Remove unsupported claims, select valid source spans, and distinguish self-reports from repository observations.");
         continue;
       }
       throw error;

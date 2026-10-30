@@ -10,8 +10,8 @@ const checks = [];
 async function request(path, init = {}, expected = 200) {
   const r = await fetch(base + path, {
     ...init,
-    headers: { ...init.headers, ...(cookie ? { cookie } : {}) },
-    signal: AbortSignal.timeout(190000),
+    headers: { connection: "close", ...init.headers, ...(cookie ? { cookie } : {}) },
+    signal: AbortSignal.timeout(290000),
   });
   if (r.headers.get("set-cookie"))
     cookie = r.headers.get("set-cookie").split(";")[0];

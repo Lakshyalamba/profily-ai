@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { MobileNav } from "./mobile-nav";
 import { ArrowUpRight, AudioLines } from "lucide-react";
 import { Button } from "@/components/ui/button";
 export function Brand() {
@@ -21,15 +22,7 @@ export function Header() {
           <Link href="/match">Job match</Link>
           <Link href="/analytics">Recruiter workspace</Link>
         </nav>
-        <details className="mobile-nav">
-          <summary>Menu</summary>
-          <div>
-            <Link href="/profile/judge">Judge demo</Link>
-            <Link href="/match">Job match</Link>
-            <Link href="/analytics">Recruiter workspace</Link>
-            <Link href="/publish">Manage public link</Link>
-          </div>
-        </details>
+        <MobileNav />
         <Button asChild size="sm">
           <Link href="/create">
             <span className="desktop-create-label">Create your profile</span>
