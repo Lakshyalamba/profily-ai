@@ -29,7 +29,7 @@ test("a first-time public-profile guest can consent to save a job comparison wit
     );
     globalThis.fetch = async () => {
       const output =
-        calls++ === 0
+        calls++ % 2 === 0
           ? {
               requirements: [
                 {
@@ -106,6 +106,32 @@ test("a first-time public-profile guest can consent to save a job comparison wit
       2,
       "Unauthorized private evidence must never reach Gemini",
     );
+    const unsaved = await compareJob(
+      new Request("http://localhost/api/match", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          profile: `public-${publication.id}`,
+          description: "Requirements: Kubernetes operations.",
+        }),
+      }),
+    );
+    assert.equal(unsaved.status, 200);
+    assert.equal((await unsaved.json()).recorded, false);
+    const unsavedCookie = unsaved.headers.get("set-cookie")!.split(";")[0];
+    assert.equal(
+      (
+        await (
+          await analytics(
+            new Request("http://localhost/api/analytics", {
+              headers: { cookie: unsavedCookie },
+            }),
+          )
+        ).json()
+      ).savedMatches,
+      0,
+    );
+    assert.equal(calls, 4);
   } finally {
     globalThis.fetch = originalFetch;
     if (oldDirectory === undefined) delete process.env.PROFILY_DATA_DIR;

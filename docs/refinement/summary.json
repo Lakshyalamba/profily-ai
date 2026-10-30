@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-10-30T15:30:20.669710+00:00",
+  "target": "https://profily-ai.vercel.app",
+  "deployment": "dpl_92zwkWpkH5GTLyfiRDJTUTK79yrs",
+  "applicationCommit": "48909b7",
+  "deploymentReady": true,
+  "typecheck": true,
+  "eslint": true,
+  "automatedTestsPassed": 51,
+  "productionBuild": true,
+  "liveIngestionChecks": 7,
+  "liveInterviewChecks": 12,
+  "postFixLiveSharingChecks": 6,
+  "routes": 11,
+  "internalLinksAndAssets": 15,
+  "staleMicCallbackRegression": true,
+  "firstGuestSavedComparisonRegression": true,
+  "physicalMicrophoneSpeakerRoundTripVerified": false,
+  "submitted": false
+}

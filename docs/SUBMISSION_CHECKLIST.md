@@ -18,7 +18,9 @@ The current page's core materials list includes project, video, usage card and e
 
 ## Repository and demonstration readiness
 
-- [x] Public repository populated; initial CI passed. Confirm latest commit checks before recording.
+Use [FINAL_DEMO_CHECKLIST.md](FINAL_DEMO_CHECKLIST.md) for the exact pages, spoken questions, source checks, quota preflight and genuine Wispr screenshot placement.
+
+- [x] Public repository populated; application refinement CI passed. Check latest repository status before recording.
 - [x] Opened live judge link without a sign-in; inspected provenance and a live answer citation.
 - [ ] On the actual recording machine, verify audible speech recognition → Gemini answer → spoken reply, interruption and text fallback. Automated controller checks do not establish a physical voice round-trip.
 - [ ] Use only fictional candidate material unless a real candidate has explicitly approved publication.

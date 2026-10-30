@@ -1,0 +1,48 @@
+[
+  {
+    "route": "/profile/judge",
+    "scrollWidth": 1497,
+    "width": 1512
+  },
+  {
+    "route": "/profile/judge",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "route": "/",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "formBeforeSidebar": true,
+    "route": "/create",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "route": "/analytics",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "route": "/interview/2145d6a8-8565-448a-a2ba-a909d1427dd0",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "route": "/interview",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "route": "/match",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "route": "/match",
+    "scrollWidth": 1497,
+    "width": 1512
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "checkedAt": "2026-10-30T15:25:25.480Z",
+  "target": "https://profily-ai.vercel.app",
+  "sourceFilesChecked": 179,
+  "privateCredentialValuesChecked": 7,
+  "sourceSecretMatches": 0,
+  "productionBundlesChecked": 12,
+  "bundleSecretMatches": 0,
+  "privateFilesTracked": false,
+  "foreignOriginMutationStatus": 403,
+  "secureHttpOnlySameSiteCookie": true,
+  "headers": {
+    "nosniff": "nosniff",
+    "frame": "DENY",
+    "permissions": "camera=(), microphone=(self)"
+  }
+}

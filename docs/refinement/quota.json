@@ -1,0 +1,11 @@
+{
+  "checkedAt": "2026-10-30T15:24:30.607Z",
+  "productionRedisRead": true,
+  "aiRequestsInCurrentWindow": 17,
+  "appGlobalHourlyLimit": 120,
+  "remainingAppGlobalRequests": 103,
+  "windowSecondsRemaining": 2785,
+  "perSessionMinuteLimit": 12,
+  "providerQuotaVisibility": false,
+  "limitsChangedOrReset": false
+}
