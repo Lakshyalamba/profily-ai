@@ -1,0 +1,17 @@
+/api/analytics 200 passed
+/api/interviews 400 passed
+/api/interviews 201 passed
+/api/interviews/a4007c92-e693-49fd-a3cb-33936c9db866/pdf 409 passed
+/api/interviews/a4007c92-e693-49fd-a3cb-33936c9db866/turn 200 passed
+/api/interviews/a4007c92-e693-49fd-a3cb-33936c9db866/turn 200 passed
+/api/interviews/a4007c92-e693-49fd-a3cb-33936c9db866/turn 200 passed
+/api/interviews/a4007c92-e693-49fd-a3cb-33936c9db866/turn 200 passed
+/api/interviews/a4007c92-e693-49fd-a3cb-33936c9db866/end 200 passed
+/api/interviews/a4007c92-e693-49fd-a3cb-33936c9db866/turn 409 passed
+/api/interviews/a4007c92-e693-49fd-a3cb-33936c9db866/pdf 200 passed
+/api/match 200 passed
+/api/analytics 200 passed
+/api/interviews/a4007c92-e693-49fd-a3cb-33936c9db866 200 passed
+/api/matches/e2661e07-1db3-4a64-aeff-4ac23e43f35c 200 passed
+/api/analytics 200 passed
+PASS 12 live phase-three checks; temporary records deleted.

@@ -1,0 +1,12 @@
+{
+  "checkedAt": "2026-10-30T16:46:37.696Z",
+  "liveGemini": true,
+  "checks": [
+    "Explicit publication consent; approved snapshot opens without creator cookie; owner information withheld",
+    "Private edits do not silently alter published snapshot",
+    "A cookie-free public guest can consent to save a real Gemini job comparison in an isolated recruiter session",
+    "Actual Gemini public chat returns cited claims or explicitly withholds unsupported output",
+    "Guest interview uses published snapshot; creator cannot read guest session",
+    "Another browser cannot unpublish creator profile; owner unpublish revokes page and API"
+  ]
+}

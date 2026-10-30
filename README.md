@@ -168,7 +168,7 @@ The project owner reports using **Wispr Flow to dictate development instructions
 
 ![Redesigned fictional judge profile](docs/ui-redesign/live-judge-desktop.jpg)
 
-[Before redesign](docs/ui-redesign/before-judge-desktop.jpg) · [Mobile judge profile](docs/ui-redesign/live-judge-mobile.jpg)
+[Before redesign](docs/ui-redesign/before-judge-desktop.jpg) · [Mobile comparison result](docs/ui-redesign/match-result-mobile.jpg)
 
 [Final mobile job comparison](docs/refinement/job-result-mobile.jpg) · [Final desktop comparison](docs/refinement/job-result-desktop.jpg)
 

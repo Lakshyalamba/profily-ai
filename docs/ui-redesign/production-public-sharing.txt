@@ -1,0 +1,30 @@
+/api/profile 200 received
+/api/profile 200 received
+/api/publish 400 received
+/api/publish 200 received
+/api/public/5ca13040a2f7159ae2fc161214c4795b 200 received
+/api/publish 200 received
+/api/profile 200 received
+/api/public/5ca13040a2f7159ae2fc161214c4795b 200 received
+/api/analytics 200 received
+/api/analytics 200 received
+/api/matches/01dfba04-a49b-4734-b9a3-9a2e2e6cf687 200 received
+/api/interviews 201 received
+/api/interviews/9d435d0a-cbe8-4e58-8d2d-57310b54b2aa 404 received
+/api/chat 200 received
+/api/interviews/9d435d0a-cbe8-4e58-8d2d-57310b54b2aa 200 received
+/api/publish 200 received
+/api/publish 200 received
+/api/public/5ca13040a2f7159ae2fc161214c4795b 404 received
+{
+  "passed": 6,
+  "checks": [
+    "Explicit publication consent; approved snapshot opens without creator cookie; owner information withheld",
+    "Private edits do not silently alter published snapshot",
+    "A cookie-free public guest can consent to save a real Gemini job comparison in an isolated recruiter session",
+    "Actual Gemini public chat returns cited claims or explicitly withholds unsupported output",
+    "Guest interview uses published snapshot; creator cannot read guest session",
+    "Another browser cannot unpublish creator profile; owner unpublish revokes page and API"
+  ]
+}
+/api/profile 200 received

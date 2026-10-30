@@ -34,11 +34,27 @@ The redesign changes presentation across the existing application. APIs, Gemini 
 - Fresh synthetic PDF extraction and Gemini structuring passed. The subsequent fresh Express import encountered **GitHub's anonymous public API rate limit (HTTP 429)** in the local environment; this is recorded in `ui-redesign/local-ingestion-check.txt`. No scripted success replaced it. The judge demo retains its real, pinned, bundled repository observations.
 - Configured credential values scanned against public source/artifacts: no matches. Backend, AI services, hooks and voice-controller source have no redesign diff.
 
-A live sharing regression test caught an initial global loading boundary returning a streamed HTTP 200 for a revoked page. Loading boundaries are now scoped to workspace routes; the revoked page and unknown route return HTTP 404 again. The complete local six-check sharing suite passes after this correction, including guest isolation and revocation. This changed no publication service code.
+A live sharing regression test caught an initial global loading boundary returning a streamed HTTP 200 for a revoked page. Loading boundaries are now scoped to workspace routes; the revoked page and unknown route return HTTP 404 again. The complete local four-check sharing suite passes after this correction, including guest isolation and revocation. This changed no publication service code.
 
 ## Deployment verification
 
-Production verification and screenshots are recorded here after the Vercel update is checked. No production environment variables are changed by this redesign.
+The corrected runtime source is commit `8e06bacc22003f60c7a5174a38706b9a23c54086`. Vercel deployment `dpl_3w9VszKSTpsgW7gVibyi67B1AycK` was verified READY and aliased to **https://profily-ai.vercel.app**. No production environment variables were changed.
+
+- Production synthetic PDF extraction, fresh real Express analysis, reviewed profile save, cited conversation/follow-up/unsupported question and job matching: **7 live workflow checks passed**. GitHub retrieval succeeded in production despite the earlier local anonymous-quota failure.
+- Production recruiter interviews: **12 live checks passed**, including ownership isolation, real Gemini history, replay safety, uncertainty, brief, valid PDF (26,930 bytes), saved job comparison and exact analytics (three text turns, zero voice turns, one interview, one report). Temporary records were removed by the test.
+- Corrected production public sharing: **6 live checks passed** with actual Gemini, independent guest access, isolated saved match, private-edit snapshot separation and owner revocation. The revoked page and API returned 404. Temporary records were removed.
+- Production HTTP smoke: **11 routes, 17 internal routes/assets**, no empty href or missing page anchors. The smoke script was invoked with bounded requests and `connection: close` after an earlier keep-alive invocation stalled.
+- Production source/HTML safety checks and 404 observations are in `ui-redesign/production-safety.json`.
+- Chrome verified the public landing CTA, scripted missing-evidence preview, judge access without sign-in, actual live Gemini answer with README/source-file citations, expandable exact excerpt and redesigned analytics. Additional production mobile DOM checks reported no overflow at 390 pixels. Responsive screenshots encountered a browser capture scaling issue later in the session; the local mobile comparison screenshot is retained instead of presenting those padded captures as polished output.
+- Node 24 GitHub Actions validation for the corrected source passed. Local TypeScript, ESLint, all 51 tests and production build were rerun successfully after the loading-boundary correction.
+
+![Deployed landing](ui-redesign/live-home-desktop.jpg)
+
+![Deployed judge hero](ui-redesign/live-judge-desktop.jpg)
+
+[Before judge layout](ui-redesign/before-judge-desktop.jpg) · [Live cited answer](ui-redesign/live-chat-desktop.jpg) · [Local mobile requirement comparison](ui-redesign/match-result-mobile.jpg) · [Actual production PDF for a synthetic candidate](ui-redesign/production-interview.pdf)
+
+The verification JSON and text files in `docs/ui-redesign` preserve actual outcomes; historical phase reports remain unchanged.
 
 ## Remaining manual checks and limits
 
